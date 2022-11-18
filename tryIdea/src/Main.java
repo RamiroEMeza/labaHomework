@@ -10,10 +10,10 @@ public class Main {
 
     public Main() {
         this.lotteryNumbers = new int[6];
-        this.chargeRandoms();
+        this.chargeLotteryNumbers();
     }
 
-    public void chargeRandoms() {
+    public void chargeLotteryNumbers() {
         for (int i = 0; i < lotteryNumbers.length; i++) {//write random numbers in randoms[]
             lotteryNumbers[i] = (int) Math.round(Math.random() * 10);
         }
