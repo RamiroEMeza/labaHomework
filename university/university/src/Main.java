@@ -54,14 +54,6 @@ public class Main {
             }
 
 
-
-
-
-
-
-
-
-
             //Print colleges
             System.out.println("We have these colleges:");
             response = ohioUniversity.getColleges();
