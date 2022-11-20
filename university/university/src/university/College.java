@@ -50,7 +50,7 @@ public class College extends AdmnistrativeSection{
     public ArrayList<String> getSpecialities() {
         ArrayList<String> response = new ArrayList<String>();
         for (Speciality speciality : specialities) {
-            response.add(speciality.getName() + " (" + speciality.getId() + ")\n [Subjects: "
+            response.add(speciality.getName() + " (Id: " + speciality.getId() + ")\n [Subjects: "
                     + speciality.getQuantitySubjects() +"]\n At "
                     + this.getName());
         }
@@ -79,4 +79,13 @@ public class College extends AdmnistrativeSection{
         return result;
     }
 
+    public ArrayList<String> getSpecialityDetails(int specialityId) {
+        ArrayList<String> response = new ArrayList<>();
+        for (Speciality speciality : this.specialities) {
+            if (speciality.getId() == specialityId) {
+                response.addAll(speciality.getDetail());
+            }
+        }
+        return response;
+    }
 }

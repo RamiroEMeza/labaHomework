@@ -97,4 +97,18 @@ public class University extends  AdmnistrativeSection{
         }
         return null;
     }
+
+    public int getLastSubjectId(){
+        return this.getSpecialities().size();
+    }
+
+    public ArrayList<String> getSpecialitieInfo(int specialityId) {
+        ArrayList<String> response = new ArrayList<>();
+        for (College college : this.colleges) {
+            if (college.haveSpecialityById(specialityId)) {
+                response.addAll(college.getSpecialityDetails(specialityId));
+            }
+        }
+        return response;
+    }
 }

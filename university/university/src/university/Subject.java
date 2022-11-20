@@ -34,4 +34,10 @@ public class Subject extends AdmnistrativeSection{
     public int getQuantityOfStudents() {
         return this.students.size();
     }
+
+    public ArrayList<Quiz> getQuizes() {
+        return new ArrayList<Quiz>(this.quizes);
+    }
+
+
 }
