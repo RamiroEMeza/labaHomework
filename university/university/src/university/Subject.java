@@ -11,9 +11,6 @@ public class Subject extends AdmnistrativeSection{
     private ArrayList<Quiz> quizes;
     private ArrayList<Student> students;
 
-
-
-
     public Subject(String name, int hours, Teacher teacher, Quiz quiz, int cost) {
         this.name = name;
         this.cost = cost;
@@ -36,9 +33,5 @@ public class Subject extends AdmnistrativeSection{
     @Override
     public int getQuantityOfStudents() {
         return this.students.size();
-    }
-
-    public int getCost() {
-        return cost;
     }
 }

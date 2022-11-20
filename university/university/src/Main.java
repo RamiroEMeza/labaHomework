@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Main {
-
     public static int randomInt(int min, int max){
         return ThreadLocalRandom.current().nextInt(min, max + 1);
     }
@@ -13,8 +12,9 @@ public class Main {
     public static void main(String[] args) {
         ArrayList<String> response;
         String[] colleges = {"Fine Arts", "Engineering and Technology", "Health Sciences"};
-        String[] specialities = {"Anthropology", "Applied Plant Biology", "Astrophysics", "Art History", "Applied Nutrition",
-                                    "Communication Sciences and Disorders"};
+        String[] specialities = {"Anthropology", "Applied Plant Biology", "Astrophysics",
+                                                    "Art History", "Applied Nutrition",
+                                                 "Communication Sciences and Disorders"};
 
         //Create a university
         University ohioUniversity = new University("Ohio U", 200);

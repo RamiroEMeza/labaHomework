@@ -11,29 +11,11 @@ public class Quiz {
     private double percentageToAprove;
     private ArrayList<Question> questions;
 
-    public Quiz(int quantityTrueFalse, double percentageToAprove) {
-        this.questions = new ArrayList<Question>();
-        this.createTrueFalse(quantityTrueFalse);
-        this.setPercentageToAprove(percentageToAprove);
-    }
-
     public Quiz(int quantityTrueFalse, int quantityMultipleChoise, double percentageToAprove) {
         this.questions = new ArrayList<Question>();
         this.setPercentageToAprove(percentageToAprove);
         this.createTrueFalse(quantityTrueFalse);
         this.createMultipleChoise(quantityMultipleChoise);
-    }
-
-
-    public void setPercentageToAprove(double percentageToAprove) {
-        if (percentageToAprove < 0) {
-            percentageToAprove *= (-1);
-        }
-        while (percentageToAprove > 1){
-            percentageToAprove *= 0.1;
-        }
-
-        this.percentageToAprove = percentageToAprove;
     }
 
     private void createTrueFalse(int quantityTrueFalse){
@@ -50,6 +32,17 @@ public class Quiz {
         }
     }
 
+
+    public void setPercentageToAprove(double percentageToAprove) {
+        if (percentageToAprove < 0) {
+            percentageToAprove *= (-1);
+        }
+        while (percentageToAprove > 1){
+            percentageToAprove *= 0.1;
+        }
+
+        this.percentageToAprove = percentageToAprove;
+    }
 
     public int getResult(){
         int result = 0;

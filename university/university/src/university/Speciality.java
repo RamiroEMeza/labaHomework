@@ -13,15 +13,6 @@ public class Speciality extends AdmnistrativeSection{
         this.subjects = new ArrayList<Subject>();
     }
 
-    public int getId() {
-        return id;
-    }
-
-    @Override
-    public int getQuantityOfStudents() {
-        return 0;
-    }
-
     public int calculateCost() {
         int result = 0;
         for (Subject subject : subjects) {
@@ -34,6 +25,19 @@ public class Speciality extends AdmnistrativeSection{
         if (!this.subjects.contains(subject)){
             this.subjects.add(subject);
         }
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    @Override
+    public int getQuantityOfStudents() {
+        int result = 0;
+        for (Subject subject : subjects) {
+            result += subject.getQuantityOfStudents();
+        }
+        return result;
     }
 
     public int getQuantitySubjects(){

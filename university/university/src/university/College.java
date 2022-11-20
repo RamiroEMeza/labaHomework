@@ -23,11 +23,6 @@ public class College extends AdmnistrativeSection{
         return false;
     }
 
-    @Override
-    public int getQuantityOfStudents() {
-        return 0;
-    }
-
     public int calculateCost(int specialityId) {
         int result = 0;
         for (Speciality speciality : specialities) {
@@ -38,22 +33,28 @@ public class College extends AdmnistrativeSection{
         return result + this.cost;
     }
 
+    public void addSpeciality(Speciality speciality){
+        if(!this.specialities.contains(speciality)){
+            this.specialities.add(speciality);
+        }
+    }
+
+    public void addSubjectToSpeciality(int specialityId, Subject subject) {
+        for (Speciality speciality : this.specialities) {
+            if (speciality.getId() == specialityId) {
+                speciality.addSubject(subject);
+            }
+        }
+    }
 
     public ArrayList<String> getSpecialities() {
         ArrayList<String> response = new ArrayList<String>();
         for (Speciality speciality : specialities) {
             response.add(speciality.getName() + " (" + speciality.getId() + ")\n [Subjects: "
-                        + speciality.getQuantitySubjects() +"]\n At "
-                        + this.getName());
+                    + speciality.getQuantitySubjects() +"]\n At "
+                    + this.getName());
         }
         return response;
-    }
-
-
-    public void addSpeciality(Speciality speciality){
-        if(!this.specialities.contains(speciality)){
-            this.specialities.add(speciality);
-        }
     }
 
     public int getId() {
@@ -69,11 +70,13 @@ public class College extends AdmnistrativeSection{
         return null;
     }
 
-    public void addSubjectToSpeciality(int specialityId, Subject subject) {
+    @Override
+    public int getQuantityOfStudents() {
+        int result = 0;
         for (Speciality speciality : this.specialities) {
-            if (speciality.getId() == specialityId) {
-                speciality.addSubject(subject);
-            }
+            result += speciality.getQuantityOfStudents();
         }
+        return result;
     }
+
 }

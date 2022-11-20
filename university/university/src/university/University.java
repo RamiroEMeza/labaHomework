@@ -8,7 +8,6 @@ public class University extends  AdmnistrativeSection{
     private ArrayList<College> colleges;
     private ArrayList<Teacher> teachers;
 
-
     public University(String name, int cost) {
         this.name = name;
         this.cost = cost;
@@ -32,6 +31,28 @@ public class University extends  AdmnistrativeSection{
         }
     }
 
+    public void addSubjectToSpeciality(int specialityId, Subject subject) {
+        for (College college: this.colleges) {
+            if(college.haveSpecialityById(specialityId)){
+                college.addSubjectToSpeciality(specialityId, subject);
+            }
+        }
+    }
+
+    public void addCollege(College college){
+        if (!this.colleges.contains(college)){
+            this.colleges.add(college);
+        }
+    }
+
+    public void addSpeciality(int collegeId, Speciality speciality) {
+        for (College college: this.colleges) {
+            if (college.getId() == collegeId){
+                college.addSpeciality(speciality);
+            }
+        }
+    }
+
     public Teacher getTeacher(int index){
         if (index <= this.teachers.size()){
             return this.teachers.get(index-1);
@@ -45,25 +66,11 @@ public class University extends  AdmnistrativeSection{
 
     @Override
     public int getQuantityOfStudents() {
-        int count;
-        for (College c: this.colleges) {
-
-        }
-        return 0;
-    }
-
-    public void addSubjectToSpeciality(int specialityId, Subject subject) {
+        int result = 0;
         for (College college: this.colleges) {
-            if(college.haveSpecialityById(specialityId)){
-                college.addSubjectToSpeciality(specialityId, subject);
-            }
+            result += college.getQuantityOfStudents();
         }
-    }
-
-    public void addCollege(College college){
-        if (!this.colleges.contains(college)){
-            this.colleges.add(college);
-        }
+        return result;
     }
 
     public ArrayList<String> getColleges(){
@@ -82,15 +89,6 @@ public class University extends  AdmnistrativeSection{
         return response;
     }
 
-
-    public void addSpeciality(int collegeId, Speciality speciality) {
-        for (College college: this.colleges) {
-            if (college.getId() == collegeId){
-                college.addSpeciality(speciality);
-            }
-        }
-    }
-
     public String getSpecialityById(int specialityId){
         for (College college : this.colleges) {
             if (college.haveSpecialityById(specialityId)){
@@ -99,6 +97,4 @@ public class University extends  AdmnistrativeSection{
         }
         return null;
     }
-
-
 }
