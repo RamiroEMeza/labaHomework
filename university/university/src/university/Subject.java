@@ -12,8 +12,9 @@ public class Subject extends AdmnistrativeSection{
     private ArrayList<Student> students;
 
     public Subject(String name, int hours, Teacher teacher, Quiz quiz, int cost) {
-        this.name = name;
-        this.cost = cost;
+        super(name, cost);
+        //this.name = name;
+        //this.cost = cost;
         this.hours = hours;
         this.teachers = new ArrayList<Teacher>();
         this.addTeacher(teacher);

@@ -1,8 +1,13 @@
 package university.members;
 
 public abstract class Member {
-    protected String name;
-    protected int idNumber;
+    private String name;
+    private int idNumber;
+
+    public Member(String name, int idNumber) {
+        this.name = name;
+        this.idNumber = idNumber;
+    }
 
     public String getName() {
         return name;

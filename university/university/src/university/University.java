@@ -9,8 +9,9 @@ public class University extends  AdmnistrativeSection{
     private ArrayList<Teacher> teachers;
 
     public University(String name, int cost) {
-        this.name = name;
-        this.cost = cost;
+        super(name, cost);
+       // this.name = name;
+       // this.cost = cost;
         this.colleges = new ArrayList<College>();
         this.teachers = new ArrayList<Teacher>();
     }
@@ -22,7 +23,7 @@ public class University extends  AdmnistrativeSection{
                 result = college.calculateCost(specialityId);
             }
         }
-        return result + this.cost;
+        return result + this.getCost();
     }
 
     public void addTeacher(Teacher teacher){

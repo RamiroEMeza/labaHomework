@@ -9,9 +9,10 @@ public class Speciality extends AdmnistrativeSection{
     private boolean requiredEntranceQuiz;
 
     public Speciality(String name, int id, int cost) {
-        this.name = name;
+        super(name, cost);
+        //this.name = name;
         this.id = id;
-        this.cost = cost;
+        //this.cost = cost;
         this.requiredEntranceQuiz = true;
         this.subjects = new ArrayList<Subject>();
     }
@@ -21,7 +22,7 @@ public class Speciality extends AdmnistrativeSection{
         for (Subject subject : subjects) {
             result += subject.getCost();
         }
-        return result + this.cost;
+        return result + this.getCost();
     }
 
     public void addSubject(Subject subject) {
