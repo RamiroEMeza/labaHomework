@@ -46,7 +46,7 @@ public class Main {
                                             new Speciality(specialities[i], (i+1),
                                                     Main.randomInt(100, 2000)));
 
-                ohioUniversity2.addSpeciality(Main.randomInt(1, colleges.length),
+                ohioUniversity2.addSpeciality(Main.randomInt(1, ohioUniversity.getColleges().size()),
                         new Speciality(specialities[i], (i+1),
                                 Main.randomInt(100, 2000)));
             }
@@ -64,7 +64,7 @@ public class Main {
                                                                 ohioUniversity.getTeacher(Main.randomInt(1,ohioUniversity.getTeachersQuantity())),
                                                                 new Quiz(4, 6, 0.7),
                                                                 Main.randomInt(50, 210)));
-                ohioUniversity2.addSubjectToSpeciality(Main.randomInt(1, specialities.length),
+                ohioUniversity2.addSubjectToSpeciality(Main.randomInt(1, ohioUniversity.getSpecialities().size()),
                         new Subject(("Subject-"+i), 40,
                                 ohioUniversity.getTeacher(Main.randomInt(1,ohioUniversity.getTeachersQuantity())),
                                 new Quiz(4, 6, 0.7),

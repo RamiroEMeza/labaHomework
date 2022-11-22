@@ -69,7 +69,9 @@ public class University extends  AdmnistrativeSection{
     }
 
     public void addSpeciality(int collegeIndex, Speciality speciality) {
-
+        if(collegeIndex > this.colleges.size()){
+            collegeIndex = this.colleges.size();
+        }
         this.colleges.get(collegeIndex).addSpeciality(speciality);
     }
 
