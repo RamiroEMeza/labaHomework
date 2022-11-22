@@ -42,11 +42,11 @@ public class Main {
 
             //add specialities to the colleges
             for (int i = 0; i < specialities.length; i++) {
-                ohioUniversity.addSpeciality(Main.randomInt(1, ohioUniversity.getColleges().size()),
+                ohioUniversity.addSpeciality(Main.randomInt(1, (ohioUniversity.getColleges().size()-1)),
                                             new Speciality(specialities[i], (i+1),
                                                     Main.randomInt(100, 2000)));
 
-                ohioUniversity2.addSpeciality(Main.randomInt(1, ohioUniversity.getColleges().size()),
+                ohioUniversity2.addSpeciality(Main.randomInt(1, (ohioUniversity.getColleges().size()-1)),
                         new Speciality(specialities[i], (i+1),
                                 Main.randomInt(100, 2000)));
             }
