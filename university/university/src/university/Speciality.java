@@ -11,9 +11,7 @@ public class Speciality extends AdmnistrativeSection{
 
     public Speciality(String name, int id, int cost) {
         super(name, cost);
-        //this.name = name;
         this.id = id;
-        //this.cost = cost;
         this.requiredEntranceQuiz = true;
         this.subjects = new ArrayList<Subject>();
     }

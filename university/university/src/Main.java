@@ -37,9 +37,12 @@ public class Main {
                         Main.randomInt(100, 2000), (i+1)));
             }
 
+            //DELETES EXAMPLE
+            //ohioUniversity.deleteCollege(2); //THIS WORKS
+
             //add specialities to the colleges
             for (int i = 0; i < specialities.length; i++) {
-                ohioUniversity.addSpeciality(Main.randomInt(1, colleges.length),
+                ohioUniversity.addSpeciality(Main.randomInt(1, ohioUniversity.getColleges().size()),
                                             new Speciality(specialities[i], (i+1),
                                                     Main.randomInt(100, 2000)));
                 ohioUniversity2.addSpeciality(Main.randomInt(1, colleges.length),
@@ -55,7 +58,7 @@ public class Main {
 
             //add subjects to the specialities
             for (int i = 1; i < (quantityOfSubjects+1); i++) {
-                ohioUniversity.addSubjectToSpeciality(Main.randomInt(1, specialities.length),
+                ohioUniversity.addSubjectToSpeciality(Main.randomInt(1, ohioUniversity.getSpecialities().size()),
                                                                 new Subject(("Subject-"+i), 40,
                                                                 ohioUniversity.getTeacher(Main.randomInt(1,ohioUniversity.getTeachersQuantity())),
                                                                 new Quiz(4, 6, 0.7),
@@ -75,12 +78,6 @@ public class Main {
 //            ohioUniversity.deleteSubject("Subject-1", 4); //This WORKS
 //            ohioUniversity.deleteSubject("Subject-1", 5); //This WORKS
 //            ohioUniversity.deleteSubject("Subject-1", 6); //This WORKS
-
-
-
-
-
-
 
             System.out.println("\nOhio University is equals to Ohio University? " +
                     ohioUniversity.equals(ohioUniversity) + "\n");

@@ -9,9 +9,7 @@ public class College extends AdmnistrativeSection{
 
     public College(String name, int cost, int id) {
         super(name, cost);
-        //this.name = name;
         this.id = id;
-       // this.cost = cost;
         this.specialities = new ArrayList<Speciality>();
     }
 
