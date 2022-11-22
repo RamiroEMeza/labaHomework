@@ -1,7 +1,5 @@
 package university;
 
-import java.util.Objects;
-
 public abstract class AdmnistrativeSection {
     private String name;
     private int cost;
@@ -18,6 +16,13 @@ public abstract class AdmnistrativeSection {
     public int getCost() {
         return cost;
     }
-
-
+    public void setName(String name) {
+        this.name = name;
+    }
+    public void setCost(int cost) {
+        if (cost < 0) {
+            cost = 0;
+        }
+        this.cost = cost;
+    }
 }
