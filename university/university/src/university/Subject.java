@@ -21,12 +21,32 @@ public class Subject extends AdmnistrativeSection{
         this.students = new ArrayList<Student>();
     }
 
-    private void addQuiz(Quiz quiz) {
+    public void addQuiz(Quiz quiz) {
         this.quizes.add(quiz);
     }
 
-    private void addTeacher(Teacher teacher) {
+    public void removeQuiz(int index){
+        if (this.quizes.size() > 1){
+            this.quizes.remove(index);
+        }
+    }
+
+    public void addTeacher(Teacher teacher) {
         this.teachers.add(teacher);
+    }
+
+    public void removeTeacher(int index){
+        if (this.teachers.size() > 1){
+            this.teachers.remove(index);
+        }
+    }
+
+    public void addStudent(Student student){
+        this.students.add(student);
+    }
+
+    public void removeStudent(int index){
+        this.students.remove(index);
     }
 
     @Override
@@ -36,6 +56,14 @@ public class Subject extends AdmnistrativeSection{
 
     public ArrayList<Quiz> getQuizes() {
         return new ArrayList<Quiz>(this.quizes);
+    }
+
+    public int getHours() {
+        return hours;
+    }
+
+    public void setHours(int hours) {
+        this.hours = hours;
     }
 
 

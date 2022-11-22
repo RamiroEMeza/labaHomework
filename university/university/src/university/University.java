@@ -68,12 +68,9 @@ public class University extends  AdmnistrativeSection{
         this.colleges.remove(index);
     }
 
-    public void addSpeciality(int collegeId, Speciality speciality) {
-        for (College college: this.colleges) {
-            if (college.getId() == collegeId){
-                college.addSpeciality(speciality);
-            }
-        }
+    public void addSpeciality(int collegeIndex, Speciality speciality) {
+
+        this.colleges.get(collegeIndex).addSpeciality(speciality);
     }
 
     public void deleteSpeciality( int specialityId){
@@ -149,7 +146,7 @@ public class University extends  AdmnistrativeSection{
         return this.getSpecialities().size();
     }
 
-    public ArrayList<String> getSpecialitieInfo(int specialityId) {
+    public ArrayList<String> getSpecialityInfo(int specialityId) {
         ArrayList<String> response = new ArrayList<>();
         for (College college : this.colleges) {
             if (college.haveSpecialityById(specialityId)) {

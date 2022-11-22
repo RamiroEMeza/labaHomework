@@ -45,6 +45,7 @@ public class Main {
                 ohioUniversity.addSpeciality(Main.randomInt(1, ohioUniversity.getColleges().size()),
                                             new Speciality(specialities[i], (i+1),
                                                     Main.randomInt(100, 2000)));
+
                 ohioUniversity2.addSpeciality(Main.randomInt(1, colleges.length),
                         new Speciality(specialities[i], (i+1),
                                 Main.randomInt(100, 2000)));
@@ -128,7 +129,7 @@ public class Main {
 
                     if (userRequest == 1) {
                         System.out.println("\nIn " + speciality + " you will have:");
-                        response = ohioUniversity.getSpecialitieInfo(specialityId);
+                        response = ohioUniversity.getSpecialityInfo(specialityId);
                         for (String line: response) {
                             System.out.println(line);
                         }

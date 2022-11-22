@@ -77,6 +77,14 @@ public class College extends AdmnistrativeSection{
         }
     }
 
+    public void deleteSubject(String subject) {
+        for (Speciality speciality : this.specialities) {
+            if (speciality.haveSubjectByName(subject)){
+                speciality.deleteSubjectByName(subject);
+            }
+        }
+    }
+
     public ArrayList<String> getSpecialities() {
         ArrayList<String> response = new ArrayList<String>();
         for (Speciality speciality : specialities) {
@@ -120,11 +128,5 @@ public class College extends AdmnistrativeSection{
     }
 
 
-    public void deleteSubject(String subject) {
-        for (Speciality speciality : this.specialities) {
-            if (speciality.haveSubjectByName(subject)){
-                speciality.deleteSubjectByName(subject);
-            }
-        }
-    }
+
 }
