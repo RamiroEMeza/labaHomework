@@ -34,6 +34,15 @@ public class Speciality extends AdmnistrativeSection{
         return Objects.equals(getName(), that.getName()) && Objects.equals(getCost(), that.getCost());
     }
 
+    public boolean haveSubjectByName(String subject){
+        for (Subject subj: this.subjects) {
+            if (subj.getName().equals(subject)){
+                return true;
+            }
+        }
+        return false;
+    }
+
     @Override
     public int hashCode() {
         return Objects.hash(getName(), getCost());
@@ -86,5 +95,13 @@ public class Speciality extends AdmnistrativeSection{
 
     public boolean isRequiredEntranceQuiz() {
         return requiredEntranceQuiz;
+    }
+
+    public void deleteSubjectByName(String subject) {
+        for (int i = 0; i < subjects.size(); i++) {
+            if (subjects.get(i).getName().equals(subject)) {
+                this.subjects.remove(i);
+            }
+        }
     }
 }

@@ -67,6 +67,21 @@ public class Main {
                                 Main.randomInt(50, 210)));
             }
 
+            //DELETES EXAMPLES
+            //ohioUniversity.deleteSpeciality(2); //This WORKS
+//            ohioUniversity.deleteSubject("Subject-1", 1); //This WORKS
+//            ohioUniversity.deleteSubject("Subject-1", 2); //This WORKS
+//            ohioUniversity.deleteSubject("Subject-1", 3); //This WORKS
+//            ohioUniversity.deleteSubject("Subject-1", 4); //This WORKS
+//            ohioUniversity.deleteSubject("Subject-1", 5); //This WORKS
+//            ohioUniversity.deleteSubject("Subject-1", 6); //This WORKS
+
+
+
+
+
+
+
             System.out.println("\nOhio University is equals to Ohio University? " +
                     ohioUniversity.equals(ohioUniversity) + "\n");
 

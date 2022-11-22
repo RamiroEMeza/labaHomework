@@ -63,6 +63,14 @@ public class College extends AdmnistrativeSection{
         }
     }
 
+    public void removeSpeciality(int specialityId) {
+        for (int j = 0; j < specialities.size(); j++) {
+            if(specialities.get(j).getId() == specialityId){
+                specialities.remove(j);
+            }
+        }
+    }
+
     public void addSubjectToSpeciality(int specialityId, Subject subject) {
         for (Speciality speciality : this.specialities) {
             if (speciality.getId() == specialityId) {
@@ -111,5 +119,14 @@ public class College extends AdmnistrativeSection{
             }
         }
         return response;
+    }
+
+
+    public void deleteSubject(String subject) {
+        for (Speciality speciality : this.specialities) {
+            if (speciality.haveSubjectByName(subject)){
+                speciality.deleteSubjectByName(subject);
+            }
+        }
     }
 }

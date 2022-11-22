@@ -54,12 +54,8 @@ public class University extends  AdmnistrativeSection{
         }
     }
 
-    public void addSubjectToSpeciality(int specialityId, Subject subject) {
-        for (College college: this.colleges) {
-            if(college.haveSpecialityById(specialityId)){
-                college.addSubjectToSpeciality(specialityId, subject);
-            }
-        }
+    public void deleteTeacher(int index){
+        this.teachers.remove(index);
     }
 
     public void addCollege(College college){
@@ -68,10 +64,30 @@ public class University extends  AdmnistrativeSection{
         }
     }
 
+    public void deleteCollege(int index){
+        this.colleges.remove(index);
+    }
+
     public void addSpeciality(int collegeId, Speciality speciality) {
         for (College college: this.colleges) {
             if (college.getId() == collegeId){
                 college.addSpeciality(speciality);
+            }
+        }
+    }
+
+    public void deleteSpeciality( int specialityId){
+        for (College college: this.colleges) {
+            if (college.haveSpecialityById(specialityId)){
+                college.removeSpeciality(specialityId);
+            }
+        }
+    }
+
+    public void addSubjectToSpeciality(int specialityId, Subject subject) {
+        for (College college: this.colleges) {
+            if(college.haveSpecialityById(specialityId)){
+                college.addSubjectToSpeciality(specialityId, subject);
             }
         }
     }
@@ -141,5 +157,13 @@ public class University extends  AdmnistrativeSection{
             }
         }
         return response;
+    }
+
+    public void deleteSubject(String subject, int specialityId) {
+        for (College college : this.colleges) {
+            if (college.haveSpecialityById(specialityId)) {
+                college.deleteSubject(subject);
+            }
+        }
     }
 }
