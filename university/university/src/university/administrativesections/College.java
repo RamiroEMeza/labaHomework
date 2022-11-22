@@ -1,4 +1,4 @@
-package university;
+package university.administrativesections;
 
 import java.util.ArrayList;
 import java.util.Objects;

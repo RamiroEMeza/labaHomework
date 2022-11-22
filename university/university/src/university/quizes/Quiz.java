@@ -1,4 +1,4 @@
-package university;
+package university.quizes;
 
 import university.questions.MultipleChoise;
 import university.questions.Question;

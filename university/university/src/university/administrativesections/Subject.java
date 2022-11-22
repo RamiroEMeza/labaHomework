@@ -1,5 +1,6 @@
-package university;
+package university.administrativesections;
 
+import university.quizes.Quiz;
 import university.members.Student;
 import university.members.Teacher;
 

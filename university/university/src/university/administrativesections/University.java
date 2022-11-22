@@ -1,4 +1,4 @@
-package university;
+package university.administrativesections;
 
 import university.members.Teacher;
 

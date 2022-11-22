@@ -1,5 +1,9 @@
-import university.*;
+import university.administrativesections.College;
+import university.administrativesections.Speciality;
+import university.administrativesections.Subject;
+import university.administrativesections.University;
 import university.members.Teacher;
+import university.quizes.Quiz;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
