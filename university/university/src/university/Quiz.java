@@ -63,4 +63,7 @@ public class Quiz {
         }
     }
 
+    public double getPercentageToAprove() {
+        return percentageToAprove*100;
+    }
 }
