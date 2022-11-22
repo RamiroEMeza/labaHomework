@@ -1,5 +1,7 @@
 package university;
 
+import java.util.Objects;
+
 public abstract class AdmnistrativeSection {
     private String name;
     private int cost;
@@ -16,4 +18,6 @@ public abstract class AdmnistrativeSection {
     public int getCost() {
         return cost;
     }
+
+
 }

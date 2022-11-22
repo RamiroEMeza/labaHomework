@@ -26,10 +26,15 @@ public class Main {
             //Create a university
             University ohioUniversity = new University("Ohio U", 200);
 
+            //Create a university to compare
+            University ohioUniversity2 = new University("Ohio U", 200);
+
             //add colleges to the university
             for (int i = 0; i < colleges.length; i++) {
                 ohioUniversity.addCollege(new College(("College of "+colleges[i]),
                                             Main.randomInt(100, 2000), (i+1)));
+                ohioUniversity2.addCollege(new College(("College of "+colleges[i]),
+                        Main.randomInt(100, 2000), (i+1)));
             }
 
             //add specialities to the colleges
@@ -37,11 +42,15 @@ public class Main {
                 ohioUniversity.addSpeciality(Main.randomInt(1, colleges.length),
                                             new Speciality(specialities[i], (i+1),
                                                     Main.randomInt(100, 2000)));
+                ohioUniversity2.addSpeciality(Main.randomInt(1, colleges.length),
+                        new Speciality(specialities[i], (i+1),
+                                Main.randomInt(100, 2000)));
             }
 
             //add teachers to the university
             for (int i = 1; i < (quantityOfTeachers+1); i++) {
                 ohioUniversity.addTeacher(new Teacher("Teacher "+i, i));
+                ohioUniversity2.addTeacher(new Teacher("Teacher "+i, i));
             }
 
             //add subjects to the specialities
@@ -51,23 +60,35 @@ public class Main {
                                                                 ohioUniversity.getTeacher(Main.randomInt(1,ohioUniversity.getTeachersQuantity())),
                                                                 new Quiz(4, 6, 0.7),
                                                                 Main.randomInt(50, 210)));
+                ohioUniversity2.addSubjectToSpeciality(Main.randomInt(1, specialities.length),
+                        new Subject(("Subject-"+i), 40,
+                                ohioUniversity.getTeacher(Main.randomInt(1,ohioUniversity.getTeachersQuantity())),
+                                new Quiz(4, 6, 0.7),
+                                Main.randomInt(50, 210)));
             }
 
+            System.out.println("\nOhio University is equals to Ohio University? " +
+                    ohioUniversity.equals(ohioUniversity) + "\n");
+
+            System.out.println("Ohio University is equals to other U? " +
+                    ohioUniversity.equals(new University("Chicago U", 400))+ "\n");
+
+            System.out.println("Ohio University is equals to Ohio University2? " +
+                    ohioUniversity.equals(ohioUniversity2)+ "\n");
 
             //Print colleges
-            System.out.println("We have these colleges:");
+            System.out.println(ohioUniversity.getName()+" have these colleges:");
             response = ohioUniversity.getColleges();
             for (String word: response) {
                 System.out.println("-" + word);
             }
 
             //Print specialities
-            System.out.println("\nWe have these specialities:");
+            System.out.println("\n"+ohioUniversity.getName()+" have these specialities:");
             response = ohioUniversity.getSpecialities();
             for (String word: response) {
                 System.out.println("-" + word + "\n");
             }
-
 
             do{
                 try {//Ask user if he wants info about any speciality

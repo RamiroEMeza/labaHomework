@@ -1,6 +1,7 @@
 package university;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Speciality extends AdmnistrativeSection{
     private ArrayList<Subject> subjects;
@@ -23,6 +24,28 @@ public class Speciality extends AdmnistrativeSection{
             result += subject.getCost();
         }
         return result + this.getCost();
+    }
+
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Speciality that = (Speciality) o;
+        if (this.hashCode() != that.hashCode()) return false;
+        return Objects.equals(getName(), that.getName()) && Objects.equals(getCost(), getCost());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getName(), getCost());
+    }
+
+    @Override
+    public String toString() {
+        return "Speciality{" +
+                "Name=" + getName() +
+                "id=" + getId() +
+                ", requiredEntranceQuiz=" + isRequiredEntranceQuiz() +
+                '}';
     }
 
     public void addSubject(Subject subject) {

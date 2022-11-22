@@ -3,6 +3,7 @@ package university;
 import university.members.Teacher;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class University extends  AdmnistrativeSection{
     private ArrayList<College> colleges;
@@ -10,8 +11,6 @@ public class University extends  AdmnistrativeSection{
 
     public University(String name, int cost) {
         super(name, cost);
-       // this.name = name;
-       // this.cost = cost;
         this.colleges = new ArrayList<College>();
         this.teachers = new ArrayList<Teacher>();
     }
@@ -24,6 +23,29 @@ public class University extends  AdmnistrativeSection{
             }
         }
         return result + this.getCost();
+    }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        University that = (University) o;
+        if (this.hashCode() != that.hashCode()) return false;
+        return Objects.equals(getName(), that.getName()) && Objects.equals(getCost(), getCost());
+    }
+
+    @Override
+    public int hashCode() {
+        //System.out.println("hashCode= "+ Objects.hash(getName(), getCost()));
+        return Objects.hash(getName(), getCost());
+    }
+
+    @Override
+    public String toString() {
+        return "University{" +
+                "\ncolleges=" + getColleges() +
+                ", \nteachers=" + getTeachers() +
+                ", \nspecialities=\n" + getSpecialities() +
+                "\n}";
     }
 
     public void addTeacher(Teacher teacher){
@@ -59,6 +81,14 @@ public class University extends  AdmnistrativeSection{
             return this.teachers.get(index-1);
         }
         return null;
+    }
+
+    public ArrayList<String> getTeachers(){
+    ArrayList<String> response = new ArrayList<String>();
+        for (Teacher c : this.teachers) {
+            response.add(c.getName());
+        }
+        return response;
     }
 
     public int getTeachersQuantity(){
