@@ -30,7 +30,7 @@ public class University extends  AdmnistrativeSection{
         if (o == null || getClass() != o.getClass()) return false;
         University that = (University) o;
         if (this.hashCode() != that.hashCode()) return false;
-        return Objects.equals(getName(), that.getName()) && Objects.equals(getCost(), getCost());
+        return Objects.equals(getName(), that.getName()) && Objects.equals(getCost(), that.getCost());
     }
 
     @Override

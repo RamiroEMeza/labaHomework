@@ -41,7 +41,7 @@ public class College extends AdmnistrativeSection{
         if (o == null || getClass() != o.getClass()) return false;
         College that = (College) o;
         if (this.hashCode() != that.hashCode()) return false;
-        return Objects.equals(getName(), that.getName()) && Objects.equals(getCost(), getCost());
+        return Objects.equals(getName(), that.getName()) && Objects.equals(getCost(), that.getCost());
     }
 
     @Override

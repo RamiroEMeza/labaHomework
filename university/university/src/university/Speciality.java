@@ -31,7 +31,7 @@ public class Speciality extends AdmnistrativeSection{
         if (o == null || getClass() != o.getClass()) return false;
         Speciality that = (Speciality) o;
         if (this.hashCode() != that.hashCode()) return false;
-        return Objects.equals(getName(), that.getName()) && Objects.equals(getCost(), getCost());
+        return Objects.equals(getName(), that.getName()) && Objects.equals(getCost(), that.getCost());
     }
 
     @Override
