@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Main {
-    public static int randomInt(int min, int max){
+    public static int getRandomInt(int min, int max){
         return ThreadLocalRandom.current().nextInt(min, max + 1);
     }
 
@@ -36,9 +36,9 @@ public class Main {
             //add colleges to the university
             for (int i = 0; i < colleges.length; i++) {
                 ohioUniversity.addCollege(new College(("College of "+colleges[i]),
-                                            Main.randomInt(100, 2000), (i+1)));
+                                            Main.getRandomInt(100, 2000), (i+1)));
                 ohioUniversity2.addCollege(new College(("College of "+colleges[i]),
-                        Main.randomInt(100, 2000), (i+1)));
+                        Main.getRandomInt(100, 2000), (i+1)));
             }
 
             //DELETES EXAMPLE
@@ -46,13 +46,13 @@ public class Main {
 
             //add specialities to the colleges
             for (int i = 0; i < specialities.length; i++) {
-                ohioUniversity.addSpeciality(Main.randomInt(1, (ohioUniversity.getColleges().size()-1)),
+                ohioUniversity.addSpeciality(Main.getRandomInt(1, (ohioUniversity.getColleges().size()-1)),
                                             new Speciality(specialities[i], (i+1),
-                                                    Main.randomInt(100, 2000)));
+                                                    Main.getRandomInt(100, 2000)));
 
-                ohioUniversity2.addSpeciality(Main.randomInt(1, (ohioUniversity.getColleges().size()-1)),
+                ohioUniversity2.addSpeciality(Main.getRandomInt(1, (ohioUniversity.getColleges().size()-1)),
                         new Speciality(specialities[i], (i+1),
-                                Main.randomInt(100, 2000)));
+                                Main.getRandomInt(100, 2000)));
             }
 
             //add teachers to the university
@@ -63,16 +63,16 @@ public class Main {
 
             //add subjects to the specialities
             for (int i = 1; i < (quantityOfSubjects+1); i++) {
-                ohioUniversity.addSubjectToSpeciality(Main.randomInt(1, ohioUniversity.getSpecialities().size()),
+                ohioUniversity.addSubjectToSpeciality(Main.getRandomInt(1, ohioUniversity.getSpecialities().size()),
                                                                 new Subject(("Subject-"+i), 40,
-                                                                ohioUniversity.getTeacher(Main.randomInt(1,ohioUniversity.getTeachersQuantity())),
+                                                                ohioUniversity.getTeacher(Main.getRandomInt(1,ohioUniversity.getTeachersQuantity())),
                                                                 new Quiz(4, 6, 0.7),
-                                                                Main.randomInt(50, 210)));
-                ohioUniversity2.addSubjectToSpeciality(Main.randomInt(1, ohioUniversity.getSpecialities().size()),
+                                                                Main.getRandomInt(50, 210)));
+                ohioUniversity2.addSubjectToSpeciality(Main.getRandomInt(1, ohioUniversity.getSpecialities().size()),
                         new Subject(("Subject-"+i), 40,
-                                ohioUniversity.getTeacher(Main.randomInt(1,ohioUniversity.getTeachersQuantity())),
+                                ohioUniversity.getTeacher(Main.getRandomInt(1,ohioUniversity.getTeachersQuantity())),
                                 new Quiz(4, 6, 0.7),
-                                Main.randomInt(50, 210)));
+                                Main.getRandomInt(50, 210)));
             }
 
             //DELETES EXAMPLES
