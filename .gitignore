@@ -2,5 +2,6 @@ tryIdea/out/
 university/university/out/
 tryIdea/.idea/
 university/university/.idea/
+university/.idea/
 *.class
 *.iml
