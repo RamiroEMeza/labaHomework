@@ -1,6 +1,7 @@
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
 import university.administrativesections.University;
 import university.helpers.UniversityCreator;
 import university.members.Teacher;
@@ -12,15 +13,31 @@ import java.util.concurrent.ThreadLocalRandom;
 
 
 public class Main {
-    private static final Logger logger = LogManager.getLogger("Main");
+    private static final Logger logger = LogManager.getLogger();
     public static int getRandomInt(int min, int max){
         return ThreadLocalRandom.current().nextInt(min, max + 1);
     }
 
     public static void main(String[] args) {
         System.out.println(logger.getLevel());
+        //FATAL
+        //ERROR
+        //WARN
+        //INFO
+        //DEBUG
+        //TRACE
 
+        logger.fatal("\nAnd its showing fatal level! :D\n");
         logger.error("\nLogger is now working! :D\n");
+
+        //Not working
+
+        logger.warn("\nAnd its showing fatal level! :D\n");
+        logger.info("\nAnd its showing info level! :D\n");
+        logger.debug("\nAnd its showing debug level! :D\n");
+        logger.trace("\nAnd its showing fatal level! :D\n");
+
+
 
         int userRequest;
         BufferedReader readRequest = new BufferedReader(new InputStreamReader(System.in));

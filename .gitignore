@@ -1,7 +1,4 @@
-tryIdea/out/
-university/university/out/
-tryIdea/.idea/
-university/university/.idea/
-university/.idea/
+out/
+.idea/
 *.class
 *.iml
