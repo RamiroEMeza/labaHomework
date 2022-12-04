@@ -1,4 +1,5 @@
 package university.members;
+
 import university.quizes.Quiz;
 
 public abstract class Student extends Member {

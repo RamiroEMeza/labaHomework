@@ -1,9 +1,9 @@
-package university.administrativesections;
+package university.administrative.sections;
 
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class College extends AdmnistrativeSection{
+public class College extends AdmnistrativeSection {
     private ArrayList<Speciality> specialities;
     private int id;
 
@@ -13,9 +13,9 @@ public class College extends AdmnistrativeSection{
         this.specialities = new ArrayList<Speciality>();
     }
 
-    public boolean haveSpecialityById(int specialityId){
-        for (Speciality speciality:
-             this.specialities) {
+    public boolean haveSpecialityById(int specialityId) {
+        for (Speciality speciality :
+                this.specialities) {
             if (speciality.getId() == specialityId) {
                 return true;
             }
@@ -55,15 +55,15 @@ public class College extends AdmnistrativeSection{
                 '}';
     }
 
-    public void addSpeciality(Speciality speciality){
-        if(!this.specialities.contains(speciality)){
+    public void addSpeciality(Speciality speciality) {
+        if (!this.specialities.contains(speciality)) {
             this.specialities.add(speciality);
         }
     }
 
     public void removeSpeciality(int specialityId) {
         for (int j = 0; j < specialities.size(); j++) {
-            if(specialities.get(j).getId() == specialityId){
+            if (specialities.get(j).getId() == specialityId) {
                 specialities.remove(j);
             }
         }
@@ -79,7 +79,7 @@ public class College extends AdmnistrativeSection{
 
     public void deleteSubject(String subject) {
         for (Speciality speciality : this.specialities) {
-            if (speciality.haveSubjectByName(subject)){
+            if (speciality.haveSubjectByName(subject)) {
                 speciality.deleteSubjectByName(subject);
             }
         }
@@ -89,7 +89,7 @@ public class College extends AdmnistrativeSection{
         ArrayList<String> response = new ArrayList<String>();
         for (Speciality speciality : specialities) {
             response.add(speciality.getName() + " (Id: " + speciality.getId() + ")\n [Subjects: "
-                    + speciality.getQuantitySubjects() +"]\n At "
+                    + speciality.getQuantitySubjects() + "]\n At "
                     + this.getName() + "\n\n");
         }
         return response;
@@ -99,9 +99,9 @@ public class College extends AdmnistrativeSection{
         return id;
     }
 
-    public String getSpecialityById(int specialityId){
-        for (Speciality speciality: this.specialities) {
-            if (speciality.getId() == specialityId){
+    public String getSpecialityById(int specialityId) {
+        for (Speciality speciality : this.specialities) {
+            if (speciality.getId() == specialityId) {
                 return speciality.getName();
             }
         }
@@ -126,7 +126,6 @@ public class College extends AdmnistrativeSection{
         }
         return response;
     }
-
 
 
 }

@@ -1,11 +1,11 @@
-package university.administrativesections;
+package university.administrative.sections;
 
 import university.members.Teacher;
 
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class University extends  AdmnistrativeSection{
+public class University extends AdmnistrativeSection {
     private ArrayList<College> colleges;
     private ArrayList<Teacher> teachers;
 
@@ -15,15 +15,16 @@ public class University extends  AdmnistrativeSection{
         this.teachers = new ArrayList<Teacher>();
     }
 
-    public int calculateCost(int specialityId){
+    public int calculateCost(int specialityId) {
         int result = 0;
-        for (College college: this.colleges) {
-            if(college.haveSpecialityById(specialityId)){
+        for (College college : this.colleges) {
+            if (college.haveSpecialityById(specialityId)) {
                 result = college.calculateCost(specialityId);
             }
         }
         return result + this.getCost();
     }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -48,78 +49,78 @@ public class University extends  AdmnistrativeSection{
                 "\n}";
     }
 
-    public void addTeacher(Teacher teacher){
+    public void addTeacher(Teacher teacher) {
         if (!this.teachers.contains(teacher)) {
             this.teachers.add(teacher);
         }
     }
 
-    public void deleteTeacher(int index){
+    public void deleteTeacher(int index) {
         this.teachers.remove(index);
     }
 
-    public void addCollege(College college){
-        if (!this.colleges.contains(college)){
+    public void addCollege(College college) {
+        if (!this.colleges.contains(college)) {
             this.colleges.add(college);
         }
     }
 
-    public void deleteCollege(int index){
+    public void deleteCollege(int index) {
         this.colleges.remove(index);
     }
 
     public void addSpeciality(int collegeIndex, Speciality speciality) {
-        if(collegeIndex > this.colleges.size()){
+        if (collegeIndex > this.colleges.size()) {
             collegeIndex = this.colleges.size();
         }
         this.colleges.get(collegeIndex).addSpeciality(speciality);
     }
 
-    public void deleteSpeciality( int specialityId){
-        for (College college: this.colleges) {
-            if (college.haveSpecialityById(specialityId)){
+    public void deleteSpeciality(int specialityId) {
+        for (College college : this.colleges) {
+            if (college.haveSpecialityById(specialityId)) {
                 college.removeSpeciality(specialityId);
             }
         }
     }
 
     public void addSubjectToSpeciality(int specialityId, Subject subject) {
-        for (College college: this.colleges) {
-            if(college.haveSpecialityById(specialityId)){
+        for (College college : this.colleges) {
+            if (college.haveSpecialityById(specialityId)) {
                 college.addSubjectToSpeciality(specialityId, subject);
             }
         }
     }
 
-    public Teacher getTeacher(int index){
-        if (index <= this.teachers.size()){
-            return this.teachers.get(index-1);
+    public Teacher getTeacher(int index) {
+        if (index <= this.teachers.size()) {
+            return this.teachers.get(index - 1);
         }
         return null;
     }
 
-    public ArrayList<String> getTeachers(){
-    ArrayList<String> response = new ArrayList<String>();
+    public ArrayList<String> getTeachers() {
+        ArrayList<String> response = new ArrayList<String>();
         for (Teacher c : this.teachers) {
             response.add(c.getName());
         }
         return response;
     }
 
-    public int getTeachersQuantity(){
+    public int getTeachersQuantity() {
         return this.teachers.size();
     }
 
     @Override
     public int getQuantityOfStudents() {
         int result = 0;
-        for (College college: this.colleges) {
+        for (College college : this.colleges) {
             result += college.getQuantityOfStudents();
         }
         return result;
     }
 
-    public ArrayList<String> getColleges(){
+    public ArrayList<String> getColleges() {
         ArrayList<String> response = new ArrayList<String>();
         for (College c : this.colleges) {
             response.add(c.getName());
@@ -135,16 +136,16 @@ public class University extends  AdmnistrativeSection{
         return response;
     }
 
-    public String getSpecialityById(int specialityId){
+    public String getSpecialityById(int specialityId) {
         for (College college : this.colleges) {
-            if (college.haveSpecialityById(specialityId)){
-               return college.getSpecialityById(specialityId);
+            if (college.haveSpecialityById(specialityId)) {
+                return college.getSpecialityById(specialityId);
             }
         }
         return null;
     }
 
-    public int getLastSubjectId(){
+    public int getLastSubjectId() {
         return this.getSpecialities().size();
     }
 

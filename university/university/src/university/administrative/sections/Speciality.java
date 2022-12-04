@@ -1,9 +1,9 @@
-package university.administrativesections;
+package university.administrative.sections;
 
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class Speciality extends AdmnistrativeSection{
+public class Speciality extends AdmnistrativeSection {
     private ArrayList<Subject> subjects;
     private int id;
 
@@ -33,9 +33,9 @@ public class Speciality extends AdmnistrativeSection{
         return Objects.equals(getName(), that.getName()) && Objects.equals(getCost(), that.getCost());
     }
 
-    public boolean haveSubjectByName(String subject){
-        for (Subject subj: this.subjects) {
-            if (subj.getName().equals(subject)){
+    public boolean haveSubjectByName(String subject) {
+        for (Subject subj : this.subjects) {
+            if (subj.getName().equals(subject)) {
                 return true;
             }
         }
@@ -57,7 +57,7 @@ public class Speciality extends AdmnistrativeSection{
     }
 
     public void addSubject(Subject subject) {
-        if (!this.subjects.contains(subject)){
+        if (!this.subjects.contains(subject)) {
             this.subjects.add(subject);
         }
     }
@@ -75,7 +75,7 @@ public class Speciality extends AdmnistrativeSection{
         return result;
     }
 
-    public int getQuantitySubjects(){
+    public int getQuantitySubjects() {
         return this.subjects.size();
     }
 
@@ -86,7 +86,7 @@ public class Speciality extends AdmnistrativeSection{
     public ArrayList<String> getDetail() {
         ArrayList<String> response = new ArrayList<>();
         for (Subject subject : subjects) {
-            response.add("~ "+subject.getName()+ " Cost: " + subject.getCost() + " QuizQ: " + subject.getQuizes().size());
+            response.add("~ " + subject.getName() + " Cost: " + subject.getCost() + " QuizQ: " + subject.getQuizes().size());
         }
         response.add("--Is enter exam required? " + this.isRequiredEntranceQuiz());
         return response;

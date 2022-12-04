@@ -1,4 +1,4 @@
-package university.administrativesections;
+package university.administrative.sections;
 
 import university.quizes.Quiz;
 import university.members.Student;
@@ -6,7 +6,7 @@ import university.members.Teacher;
 
 import java.util.ArrayList;
 
-public class Subject extends AdmnistrativeSection{
+public class Subject extends AdmnistrativeSection {
     private int hours;
     private ArrayList<Teacher> teachers;
     private ArrayList<Quiz> quizes;
@@ -26,8 +26,8 @@ public class Subject extends AdmnistrativeSection{
         this.quizes.add(quiz);
     }
 
-    public void removeQuiz(int index){
-        if (this.quizes.size() > 1){
+    public void removeQuiz(int index) {
+        if (this.quizes.size() > 1) {
             this.quizes.remove(index);
         }
     }
@@ -36,17 +36,17 @@ public class Subject extends AdmnistrativeSection{
         this.teachers.add(teacher);
     }
 
-    public void removeTeacher(int index){
-        if (this.teachers.size() > 1){
+    public void removeTeacher(int index) {
+        if (this.teachers.size() > 1) {
             this.teachers.remove(index);
         }
     }
 
-    public void addStudent(Student student){
+    public void addStudent(Student student) {
         this.students.add(student);
     }
 
-    public void removeStudent(int index){
+    public void removeStudent(int index) {
         this.students.remove(index);
     }
 

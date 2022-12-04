@@ -1,6 +1,6 @@
 package university.questions;
 
-public class MultipleChoise extends Question{
+public class MultipleChoise extends Question {
     private char expectedAnswer;
     private char actualAnswer;
 
@@ -14,7 +14,7 @@ public class MultipleChoise extends Question{
     }
 
 
-    public void setActualAnswer(char actualAnswer){
+    public void setActualAnswer(char actualAnswer) {
         this.actualAnswer = actualAnswer;
     }
 }

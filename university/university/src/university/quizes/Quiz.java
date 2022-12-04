@@ -18,17 +18,17 @@ public class Quiz {
         this.createMultipleChoise(quantityMultipleChoise);
     }
 
-    private void createTrueFalse(int quantityTrueFalse){
+    private void createTrueFalse(int quantityTrueFalse) {
         Random r = new Random();
         for (int i = 0; i < quantityTrueFalse; i++) {
             this.questions.add(new TrueFalse(r.nextBoolean()));
         }
     }
 
-    private void createMultipleChoise(int quantityMultipleChoise){
+    private void createMultipleChoise(int quantityMultipleChoise) {
         Random r = new Random();
         for (int i = 0; i < quantityMultipleChoise; i++) {
-            this.questions.add(new MultipleChoise((char)(r.nextInt(26) + 'a')));
+            this.questions.add(new MultipleChoise((char) (r.nextInt(26) + 'a')));
         }
     }
 
@@ -37,18 +37,18 @@ public class Quiz {
         if (percentageToAprove < 0) {
             percentageToAprove *= (-1);
         }
-        while (percentageToAprove > 1){
+        while (percentageToAprove > 1) {
             percentageToAprove *= 0.1;
         }
 
         this.percentageToAprove = percentageToAprove;
     }
 
-    public int getResult(){
+    public int getResult() {
         int result = 0;
-        for (Question question:
-             this.questions) {
-            if (question.isCorrect()){
+        for (Question question :
+                this.questions) {
+            if (question.isCorrect()) {
                 result++;
             }
         }
@@ -56,14 +56,14 @@ public class Quiz {
     }
 
     public boolean isAproved() {
-        if (this.getResult() >= (questions.size()*percentageToAprove)) {
+        if (this.getResult() >= (questions.size() * percentageToAprove)) {
             return true;
-        }else {
+        } else {
             return false;
         }
     }
 
     public double getPercentageToAprove() {
-        return percentageToAprove*100;
+        return percentageToAprove * 100;
     }
 }

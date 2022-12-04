@@ -1,4 +1,4 @@
-package university.administrativesections;
+package university.administrative.sections;
 
 public abstract class AdmnistrativeSection {
     private String name;
