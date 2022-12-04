@@ -10,7 +10,7 @@ import university.quizes.Quiz;
 import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class UniversityCreator {
+public final class UniversityCreator {
     public static int getRandomInt(int min, int max) {
         return ThreadLocalRandom.current().nextInt(min, max + 1);
     }

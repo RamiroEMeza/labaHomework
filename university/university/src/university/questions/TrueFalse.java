@@ -1,6 +1,6 @@
 package university.questions;
 
-public class TrueFalse extends Question {
+public final class TrueFalse extends Question {
     private boolean expectedAnswer;
     private boolean actualAnswer;
 

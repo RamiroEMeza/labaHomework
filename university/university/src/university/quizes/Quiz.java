@@ -33,7 +33,7 @@ public class Quiz {
     }
 
 
-    public void setPercentageToAprove(double percentageToAprove) {
+    public final void setPercentageToAprove(double percentageToAprove) {
         if (percentageToAprove < 0) {
             percentageToAprove *= (-1);
         }
@@ -55,7 +55,7 @@ public class Quiz {
         return result;
     }
 
-    public boolean isAproved() {
+    public final boolean isAproved() {
         if (this.getResult() >= (questions.size() * percentageToAprove)) {
             return true;
         } else {
@@ -63,7 +63,7 @@ public class Quiz {
         }
     }
 
-    public double getPercentageToAprove() {
+    public final double getPercentageToAprove() {
         return percentageToAprove * 100;
     }
 }

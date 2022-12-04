@@ -15,6 +15,7 @@ public class University extends AdmnistrativeSection {
         this.teachers = new ArrayList<Teacher>();
     }
 
+
     public int calculateCost(int specialityId) {
         int result = 0;
         for (College college : this.colleges) {

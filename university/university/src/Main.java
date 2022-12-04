@@ -1,7 +1,5 @@
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
 import university.administrative.sections.University;
 import university.helpers.UniversityCreator;
 import university.members.Teacher;
@@ -15,7 +13,7 @@ import java.util.concurrent.ThreadLocalRandom;
 public class Main {
     private static final Logger logger = LogManager.getLogger();
 
-    public static int getRandomInt(int min, int max) {
+    public static final int getRandomInt(int min, int max) {
         return ThreadLocalRandom.current().nextInt(min, max + 1);
     }
 
@@ -25,7 +23,7 @@ public class Main {
         //ERROR
         //WARN
         //INFO
-        //DEBUG 
+        //DEBUG
         //TRACE
 
         logger.fatal("\nAnd its showing fatall level! :D\n");

@@ -10,19 +10,24 @@ public abstract class AdmnistrativeSection {
     }
 
     public abstract int getQuantityOfStudents();
-    public String getName(){
+
+    public final String getName() {
         return name;
     }
-    public int getCost() {
+
+    public final int getCost() {
         return cost;
     }
-    public void setName(String name) {
+
+    public final void setName(String name) {
         this.name = name;
     }
-    public void setCost(int cost) {
+
+    public final void setCost(int cost) {
         if (cost < 0) {
             cost = 0;
         }
         this.cost = cost;
     }
+
 }
