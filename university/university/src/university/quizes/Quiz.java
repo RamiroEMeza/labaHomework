@@ -1,7 +1,7 @@
 package university.quizes;
 
+import interfaces.IEvaluate;
 import university.questions.MultipleChoise;
-import university.questions.Question;
 import university.questions.TrueFalse;
 
 import java.util.ArrayList;
@@ -9,10 +9,10 @@ import java.util.Random;
 
 public class Quiz {
     private double percentageToAprove;
-    private ArrayList<Question> questions;
+    private ArrayList<IEvaluate> questions;
 
     public Quiz(int quantityTrueFalse, int quantityMultipleChoise, double percentageToAprove) {
-        this.questions = new ArrayList<Question>();
+        this.questions = new ArrayList<IEvaluate>();
         this.setPercentageToAprove(percentageToAprove);
         this.createTrueFalse(quantityTrueFalse);
         this.createMultipleChoise(quantityMultipleChoise);
@@ -46,7 +46,7 @@ public class Quiz {
 
     public int getResult() {
         int result = 0;
-        for (Question question :
+        for (IEvaluate question :
                 this.questions) {
             if (question.isCorrect()) {
                 result++;

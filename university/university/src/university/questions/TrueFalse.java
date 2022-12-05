@@ -1,6 +1,8 @@
 package university.questions;
 
-public final class TrueFalse extends Question {
+import interfaces.IEvaluate;
+
+public final class TrueFalse implements IEvaluate {
     private boolean expectedAnswer;
     private boolean actualAnswer;
 

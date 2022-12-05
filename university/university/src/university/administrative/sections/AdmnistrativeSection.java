@@ -1,10 +1,12 @@
 package university.administrative.sections;
 
+import cost.ICalculateCost;
+
 public abstract class AdmnistrativeSection {
     private String name;
-    private int cost;
+    private ICalculateCost cost;
 
-    public AdmnistrativeSection(String name, int cost) {
+    public AdmnistrativeSection(String name, ICalculateCost cost) {
         this.name = name;
         this.cost = cost;
     }
@@ -16,17 +18,14 @@ public abstract class AdmnistrativeSection {
     }
 
     public final int getCost() {
-        return cost;
+        return cost.getCost();
     }
 
     public final void setName(String name) {
         this.name = name;
     }
 
-    public final void setCost(int cost) {
-        if (cost < 0) {
-            cost = 0;
-        }
+    public final void setCost(ICalculateCost cost) {
         this.cost = cost;
     }
 

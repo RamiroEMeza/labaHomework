@@ -1,6 +1,8 @@
 package university.questions;
 
-public class MultipleChoise extends Question {
+import interfaces.IEvaluate;
+
+public class MultipleChoise implements IEvaluate {
     private char expectedAnswer;
     private char actualAnswer;
 
