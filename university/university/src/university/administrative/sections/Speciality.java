@@ -1,5 +1,7 @@
 package university.administrative.sections;
 
+import cost.ICalculateCost;
+
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -9,7 +11,7 @@ public class Speciality extends AdmnistrativeSection {
 
     private boolean requiredEntranceQuiz;
 
-    public Speciality(String name, int id, int cost) {
+    public Speciality(String name, int id, ICalculateCost cost) {
         super(name, cost);
         this.id = id;
         this.requiredEntranceQuiz = true;
@@ -19,9 +21,9 @@ public class Speciality extends AdmnistrativeSection {
     public int calculateCost() {
         int result = 0;
         for (Subject subject : subjects) {
-            result += subject.getCost();
+            result += subject.getBaseCost() + subject.getExtraCharge();
         }
-        return result + this.getCost();
+        return result + this.getBaseCost();
     }
 
     @Override
@@ -30,7 +32,7 @@ public class Speciality extends AdmnistrativeSection {
         if (o == null || getClass() != o.getClass()) return false;
         Speciality that = (Speciality) o;
         if (this.hashCode() != that.hashCode()) return false;
-        return Objects.equals(getName(), that.getName()) && Objects.equals(getCost(), that.getCost());
+        return Objects.equals(getName(), that.getName()) && Objects.equals(getBaseCost(), that.getBaseCost());
     }
 
     public boolean haveSubjectByName(String subject) {
@@ -44,7 +46,7 @@ public class Speciality extends AdmnistrativeSection {
 
     @Override
     public int hashCode() {
-        return Objects.hash(getName(), getCost());
+        return Objects.hash(getName(), getBaseCost());
     }
 
     @Override
@@ -86,7 +88,8 @@ public class Speciality extends AdmnistrativeSection {
     public ArrayList<String> getDetail() {
         ArrayList<String> response = new ArrayList<>();
         for (Subject subject : subjects) {
-            response.add("~ " + subject.getName() + " Cost: " + subject.getCost() + " QuizQ: " + subject.getQuizes().size());
+            response.add("~ " + subject.getName() + " Cost: " + subject.getBaseCost() + " Quality teacher charge:" +
+                    subject.getExtraCharge() + " QuizQ: " + subject.getQuizes().size());
         }
         response.add("--Is enter exam required? " + this.isRequiredEntranceQuiz());
         return response;

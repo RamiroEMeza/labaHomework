@@ -13,20 +13,25 @@ import java.util.concurrent.ThreadLocalRandom;
 public class Main {
     private static final Logger LOGGER = LogManager.getLogger();
 
-    public static final int getRandomInt(int min, int max) {
+    public static int getRandomInt(int min, int max) {
         return ThreadLocalRandom.current().nextInt(min, max + 1);
     }
 
-    public static final void isEqualsUniversities(University u1, University u2) {
+    public static void isEqualsUniversities(University u1, University u2) {
         System.out.println("\nOhio University is equals to Ohio University? " +
                 u1.equals(u2) + "\n");
+    }
+
+    public static void createTeachers(ArrayList<Teacher> teachers, int quantity) {
+        for (int i = 1; i < (quantity + 1); i++) {
+            teachers.add(new Teacher("Teacher " + i, i, i));
+        }
     }
 
 
     public static void main(String[] args) {
         final String UNIVERSITY_NAME = "Ohio U";
         final int QUANTITY_OF_TEACHERS = 5;
-        ;
         final int QUANTITY_OF_SUBJECTS = 60;
         final int MIN_U_COST = 50;
         final int MAX_U_COST = 1200;
@@ -34,32 +39,16 @@ public class Main {
         final String[] ARR_SPECIALITIES = {"Anthropology", "Applied Plant Biology", "Astrophysics",
                 "Art History", "Applied Nutrition",
                 "Communication Sciences and Disorders"};
+        ArrayList<Teacher> teachers = new ArrayList<>();
+        Main.createTeachers(teachers, QUANTITY_OF_TEACHERS);
+        UniversityCreator universityCreator = new UniversityCreator();
+        ArrayList<String> response;
+
         int userRequest;
         BufferedReader readRequest = new BufferedReader(new InputStreamReader(System.in));
-        //System.out.println(logger.getLevel());
-        //FATAL
-        //ERROR
-        //WARN
-        //INFO
-        //DEBUG
-        //TRACE
-//        logger.fatal("\nLogger is now working! :D\n");
-//        logger.error("\nAnd its showing error level! :D\n");
-//        logger.warn("\nAnd its showing fatal level! :D\n");
-//        logger.info("\nAnd its showing info level! :D\n");
-//        logger.debug("\nAnd its showing debug level! :D\n");
-//        logger.trace("\nAnd its showing fatal level! :D\n");
 
         do {
             LOGGER.info("Start of the program");
-            ArrayList<Teacher> teachers = new ArrayList<>();
-            UniversityCreator universityCreator = new UniversityCreator();
-            ArrayList<String> response;
-
-            for (int i = 1; i < (QUANTITY_OF_TEACHERS + 1); i++) {
-                teachers.add(new Teacher("Teacher " + i, i));
-            }
-
             //Create a university
             University ohioU = universityCreator.create(UNIVERSITY_NAME, Main.getRandomInt(MIN_U_COST, MAX_U_COST),
                     ARR_COLLEGES, ARR_SPECIALITIES, teachers, QUANTITY_OF_SUBJECTS);

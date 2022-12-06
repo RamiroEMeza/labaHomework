@@ -1,5 +1,7 @@
 package university.administrative.sections;
 
+import cost.ICalculateCost;
+
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -7,7 +9,7 @@ public class College extends AdmnistrativeSection {
     private ArrayList<Speciality> specialities;
     private int id;
 
-    public College(String name, int cost, int id) {
+    public College(String name, ICalculateCost cost, int id) {
         super(name, cost);
         this.id = id;
         this.specialities = new ArrayList<Speciality>();
@@ -30,7 +32,7 @@ public class College extends AdmnistrativeSection {
                 result = speciality.calculateCost();
             }
         }
-        return result + this.getCost();
+        return result + this.getBaseCost();
     }
 
     @Override
@@ -39,12 +41,12 @@ public class College extends AdmnistrativeSection {
         if (o == null || getClass() != o.getClass()) return false;
         College that = (College) o;
         if (this.hashCode() != that.hashCode()) return false;
-        return Objects.equals(getName(), that.getName()) && Objects.equals(getCost(), that.getCost());
+        return Objects.equals(getName(), that.getName()) && Objects.equals(getBaseCost(), that.getBaseCost());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getName(), getCost());
+        return Objects.hash(getName(), getBaseCost());
     }
 
     @Override

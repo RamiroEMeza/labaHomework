@@ -17,7 +17,7 @@ public abstract class AdmnistrativeSection {
         return name;
     }
 
-    public final int getCost() {
+    public final int getBaseCost() {
         return cost.getCost();
     }
 

@@ -1,8 +1,9 @@
 package university.administrative.sections;
 
-import university.quizes.Quiz;
+import cost.ICalculateCost;
 import university.members.Student;
 import university.members.Teacher;
+import university.quizes.Quiz;
 
 import java.util.ArrayList;
 
@@ -12,7 +13,7 @@ public class Subject extends AdmnistrativeSection {
     private ArrayList<Quiz> quizes;
     private ArrayList<Student> students;
 
-    public Subject(String name, int hours, Teacher teacher, Quiz quiz, int cost) {
+    public Subject(String name, int hours, Teacher teacher, Quiz quiz, ICalculateCost cost) {
         super(name, cost);
         this.hours = hours;
         this.teachers = new ArrayList<Teacher>();
@@ -68,4 +69,12 @@ public class Subject extends AdmnistrativeSection {
     }
 
 
+    public int getExtraCharge() {
+        int result = 0;
+        for (Teacher t :
+                teachers) {
+            result += t.getRating();
+        }
+        return result * this.getBaseCost();
+    }
 }

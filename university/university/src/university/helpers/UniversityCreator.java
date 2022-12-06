@@ -1,5 +1,6 @@
 package university.helpers;
 
+import cost.FixedCost;
 import university.administrative.sections.College;
 import university.administrative.sections.Speciality;
 import university.administrative.sections.Subject;
@@ -18,19 +19,19 @@ public final class UniversityCreator {
     public University create(String name, int cost, String[] collegesNames, String[] specialitiesNames,
                              ArrayList<Teacher> teachers, int subjectsQuantity) {
         //Create a university
-        University university = new University(name, cost);
+        University university = new University(name, new FixedCost(UniversityCreator.getRandomInt(100, 2000)));
 
         //add colleges to the university
         for (int i = 0; i < collegesNames.length; i++) {
-            university.addCollege(new College(("College of " + collegesNames[i]),
-                    UniversityCreator.getRandomInt(100, 2000), (i + 1)));
+            university.addCollege(new College(("College of " + collegesNames[i]), new FixedCost(
+                    UniversityCreator.getRandomInt(100, 2000)), (i + 1)));
         }
 
         //add specialities to the colleges
         for (int i = 0; i < specialitiesNames.length; i++) {
             university.addSpeciality(UniversityCreator.getRandomInt(1, (university.getColleges().size() - 1)),
                     new Speciality(specialitiesNames[i], (i + 1),
-                            UniversityCreator.getRandomInt(100, 2000)));
+                            new FixedCost(UniversityCreator.getRandomInt(100, 2000))));
 
         }
 
@@ -41,7 +42,7 @@ public final class UniversityCreator {
                     new Subject(("Subject-" + i), 40,
                             teachers.get(UniversityCreator.getRandomInt(0, (teachers.size() - 1))),
                             new Quiz(4, 6, 0.7),
-                            UniversityCreator.getRandomInt(50, 210)));
+                            new FixedCost(UniversityCreator.getRandomInt(50, 210))));
         }
 
         return university;

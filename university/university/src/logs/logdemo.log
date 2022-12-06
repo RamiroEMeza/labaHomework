@@ -8,3 +8,14 @@
 21:07:38.818 [main] INFO  Main - User ask about the details of an speciality
 21:07:42.745 [main] WARN  Main - User didn't ask about any speciality and enter an non integer data, setting userRequest=0
 21:07:42.746 [main] INFO  Main - END MAIN
+23:52:48.862 [main] INFO  Main - Start of the program
+23:53:01.121 [main] INFO  Main - User ask about an speciality
+23:53:03.227 [main] INFO  Main - User ask about the details of an speciality
+23:53:15.772 [main] INFO  Main - User ask about an speciality
+23:53:18.321 [main] INFO  Main - User ask about the details of an speciality
+23:57:52.245 [main] INFO  Main - Start of the program
+23:58:03.728 [main] INFO  Main - Start of the program
+23:58:17.280 [main] INFO  Main - User ask about an speciality
+23:58:20.600 [main] INFO  Main - User ask about the details of an speciality
+23:58:23.437 [main] INFO  Main - User ask about an speciality
+23:58:24.502 [main] INFO  Main - User ask about the details of an speciality

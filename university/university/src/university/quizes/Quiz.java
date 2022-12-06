@@ -1,6 +1,6 @@
 package university.quizes;
 
-import interfaces.IEvaluate;
+import evaluate.IEvaluate;
 import university.questions.MultipleChoise;
 import university.questions.TrueFalse;
 
