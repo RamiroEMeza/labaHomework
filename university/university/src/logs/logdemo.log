@@ -19,3 +19,51 @@
 23:58:20.600 [main] INFO  Main - User ask about the details of an speciality
 23:58:23.437 [main] INFO  Main - User ask about an speciality
 23:58:24.502 [main] INFO  Main - User ask about the details of an speciality
+10:49:58.562 [main] INFO  Main - Start of the program
+10:49:58.591 [main] INFO  Main - 
+Ohio University is equals to Ohio University? true
+
+10:49:58.591 [main] INFO  Main - Ohio U have these colleges:
+10:49:58.591 [main] INFO  Main - [College of Fine Arts, College of Engineering and Technology, College of Health Sciences]
+10:49:58.593 [main] INFO  Main - 
+Ohio U have these specialities:
+10:49:58.593 [main] INFO  Main - -Anthropology (Id: 1)
+ [Subjects: 10]
+ At College of Engineering and Technology
+
+
+
+10:49:58.593 [main] INFO  Main - -Applied Plant Biology (Id: 2)
+ [Subjects: 11]
+ At College of Engineering and Technology
+
+
+
+10:49:58.593 [main] INFO  Main - -Astrophysics (Id: 3)
+ [Subjects: 5]
+ At College of Engineering and Technology
+
+
+
+10:49:58.593 [main] INFO  Main - -Art History (Id: 4)
+ [Subjects: 10]
+ At College of Engineering and Technology
+
+
+
+10:49:58.593 [main] INFO  Main - -Applied Nutrition (Id: 5)
+ [Subjects: 9]
+ At College of Health Sciences
+
+
+
+10:49:58.593 [main] INFO  Main - -Communication Sciences and Disorders (Id: 6)
+ [Subjects: 15]
+ At College of Health Sciences
+
+
+
+10:49:58.593 [main] INFO  Main - 
+If you want to know the cost of any of ours specialities, please enter its (id) number. Any other character to exit
+10:50:04.284 [main] INFO  Main - User didn't ask about any speciality and enter an non integer data, setting userRequest=0
+10:50:04.284 [main] INFO  Main - END MAIN

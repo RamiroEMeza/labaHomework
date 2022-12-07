@@ -1,3 +1,5 @@
+import exeptions.NoCollegesException;
+import exeptions.NoUniversityInReferenceException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import university.administrative.sections.University;
@@ -17,8 +19,11 @@ public class Main {
         return ThreadLocalRandom.current().nextInt(min, max + 1);
     }
 
-    public static void isEqualsUniversities(University u1, University u2) {
-        System.out.println("\nOhio University is equals to Ohio University? " +
+    public static void isEqualsUniversities(University u1, University u2) throws NoUniversityInReferenceException {
+        if (u1 == null || u2 == null) {
+            throw new NoUniversityInReferenceException("There's not U in" + u1 + " or " + u2);
+        }
+        LOGGER.info("\nOhio University is equals to Ohio University? " +
                 u1.equals(u2) + "\n");
     }
 
@@ -42,7 +47,7 @@ public class Main {
         ArrayList<Teacher> teachers = new ArrayList<>();
         Main.createTeachers(teachers, QUANTITY_OF_TEACHERS);
         UniversityCreator universityCreator = new UniversityCreator();
-        ArrayList<String> response;
+        ArrayList<String> response = null;
 
         int userRequest;
         BufferedReader readRequest = new BufferedReader(new InputStreamReader(System.in));
@@ -50,44 +55,57 @@ public class Main {
         do {
             LOGGER.info("Start of the program");
             //Create a university
-            University ohioU = universityCreator.create(UNIVERSITY_NAME, Main.getRandomInt(MIN_U_COST, MAX_U_COST),
-                    ARR_COLLEGES, ARR_SPECIALITIES, teachers, QUANTITY_OF_SUBJECTS);
+            University ohioU = null;
+            try {
+                ohioU = universityCreator.create(UNIVERSITY_NAME, Main.getRandomInt(MIN_U_COST, MAX_U_COST),
+                        ARR_COLLEGES, ARR_SPECIALITIES, teachers, QUANTITY_OF_SUBJECTS);
+            } catch (NoCollegesException nCE) {
+                LOGGER.error(nCE.getMessage());
+            }
 
-            Main.isEqualsUniversities(ohioU, ohioU);
+            try {
+                Main.isEqualsUniversities(ohioU, ohioU);
+            } catch (NoUniversityInReferenceException nCE) {
+                LOGGER.error(nCE.getMessage());
+            }
+
 
             //Print colleges
-            System.out.println(ohioU.getName() + " have these colleges:");
-            response = ohioU.getColleges();
-            System.out.println(response.toString());
-
+            try {
+                LOGGER.info(ohioU.getName() + " have these colleges:");
+                response = ohioU.getColleges();
+                LOGGER.info(response.toString());
+            } catch (NoCollegesException nCE) {
+                LOGGER.error(nCE.getMessage());
+            }
 
             //Print specialities
-            System.out.println("\n" + ohioU.getName() + " have these specialities:");
+            LOGGER.info("\n" + ohioU.getName() + " have these specialities:");
             response = ohioU.getSpecialities();
             for (String word : response) {
-                System.out.println("-" + word + "\n");
+                LOGGER.info("-" + word + "\n");
             }
 
             do {
                 try {//Ask user if he wants info about any speciality
-                    System.out.println("\nIf you want to know the cost of any of ours specialities, " +
+                    LOGGER.info("\nIf you want to know the cost of any of ours specialities, " +
                             "please enter its " + "(id) number. " + "Any other character to exit");
                     userRequest = Integer.parseInt(readRequest.readLine());
                 } catch (Exception e) {
-                    LOGGER.warn("User didn't ask about any speciality and enter an non integer data, " +
+                    LOGGER.info("User didn't ask about any speciality and enter an non integer data, " +
                             "setting userRequest=0");
                     userRequest = 0;
                 }
 
-                if (userRequest > 0 && userRequest <= ohioU.getLastSubjectId()) {
+                if (userRequest > 0 && userRequest <= ohioU.getLastSpecialityId()) {
                     LOGGER.info("User ask about an speciality");
                     int specialityId = userRequest;
                     String speciality = ohioU.getSpecialityById(specialityId);
-                    System.out.println("\nHow much does it cost to study " + speciality + " (" + specialityId + ") ?");
-                    System.out.println("--It will be: " + ohioU.calculateCost(specialityId));
+                    LOGGER.info("\nHow much does it cost to study " + speciality + " (" + specialityId + ") ?");
+                    LOGGER.info("--It will be: " + ohioU.calculateCost(specialityId));
 
                     try {//Ask user if he wants details about the speciality
-                        System.out.println("\nIf you want to know the details of " + speciality + ", please enter [1]." +
+                        LOGGER.info("\nIf you want to know the details of " + speciality + ", please enter [1]." +
                                 "\nAny other character to keep asking." + "\n[0] to exit");
                         userRequest = Integer.parseInt(readRequest.readLine());
                     } catch (Exception e) {
@@ -98,10 +116,10 @@ public class Main {
 
                     if (userRequest == 1) {
                         LOGGER.info("User ask about the details of an speciality");
-                        System.out.println("\nIn " + speciality + " you will have:");
+                        LOGGER.info("\nIn " + speciality + " you will have:");
                         response = ohioU.getSpecialityInfo(specialityId);
                         for (String line : response) {
-                            System.out.println(line);
+                            LOGGER.info(line);
                         }
                     }
                 }

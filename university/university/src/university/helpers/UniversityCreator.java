@@ -1,6 +1,7 @@
 package university.helpers;
 
 import cost.FixedCost;
+import exeptions.NoCollegesException;
 import university.administrative.sections.College;
 import university.administrative.sections.Speciality;
 import university.administrative.sections.Subject;
@@ -17,7 +18,7 @@ public final class UniversityCreator {
     }
 
     public University create(String name, int cost, String[] collegesNames, String[] specialitiesNames,
-                             ArrayList<Teacher> teachers, int subjectsQuantity) {
+                             ArrayList<Teacher> teachers, int subjectsQuantity) throws NoCollegesException {
         //Create a university
         University university = new University(name, new FixedCost(UniversityCreator.getRandomInt(100, 2000)));
 
@@ -29,10 +30,13 @@ public final class UniversityCreator {
 
         //add specialities to the colleges
         for (int i = 0; i < specialitiesNames.length; i++) {
-            university.addSpeciality(UniversityCreator.getRandomInt(1, (university.getColleges().size() - 1)),
-                    new Speciality(specialitiesNames[i], (i + 1),
-                            new FixedCost(UniversityCreator.getRandomInt(100, 2000))));
-
+            try {
+                university.addSpeciality(UniversityCreator.getRandomInt(1, (university.getColleges().size() - 1)),
+                        new Speciality(specialitiesNames[i], (i + 1),
+                                new FixedCost(UniversityCreator.getRandomInt(100, 2000))));
+            } catch (NoCollegesException nCE) {
+                throw new NoCollegesException("No Colleges in " + name);
+            }
         }
 
 

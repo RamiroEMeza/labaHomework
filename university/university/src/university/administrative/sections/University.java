@@ -1,6 +1,10 @@
 package university.administrative.sections;
 
 import cost.ICalculateCost;
+import exeptions.InvalidIDException;
+import exeptions.NoCollegesException;
+import exeptions.NoSpecialtiesFoundException;
+import exeptions.NoTeacherException;
 import university.members.Teacher;
 
 import java.util.ArrayList;
@@ -12,19 +16,8 @@ public class University extends AdmnistrativeSection {
 
     public University(String name, ICalculateCost cost) {
         super(name, cost);
-        this.colleges = new ArrayList<College>();
-        this.teachers = new ArrayList<Teacher>();
-    }
-
-
-    public int calculateCost(int specialityId) {
-        int result = 0;
-        for (College college : this.colleges) {
-            if (college.haveSpecialityById(specialityId)) {
-                result = college.calculateCost(specialityId);
-            }
-        }
-        return result + this.getBaseCost();
+        this.colleges = new ArrayList<>();
+        this.teachers = new ArrayList<>();
     }
 
     @Override
@@ -44,11 +37,18 @@ public class University extends AdmnistrativeSection {
 
     @Override
     public String toString() {
-        return "University{" +
-                "\ncolleges=" + getColleges() +
-                ", \nteachers=" + getTeachers() +
-                ", \nspecialities=\n" + getSpecialities() +
-                "\n}";
+        return this.getName() + " has " + this.colleges + " hires " + this.teachers + " teachers"
+                + " and cost " + this.getBaseCost();
+    }
+
+    public int calculateCost(int specialityId) {
+        int result = 0;
+        for (College college : this.colleges) {
+            if (college.haveSpecialityById(specialityId)) {
+                result = college.calculateCost(specialityId);
+            }
+        }
+        return result + this.getBaseCost();
     }
 
     public void addTeacher(Teacher teacher) {
@@ -57,8 +57,12 @@ public class University extends AdmnistrativeSection {
         }
     }
 
-    public void deleteTeacher(int index) {
-        this.teachers.remove(index);
+    public void deleteTeacher(int index) throws NoTeacherException {
+        if (index >= 0 && index < this.teachers.size()) {
+            this.teachers.remove(index);
+        } else {
+            throw new NoTeacherException("Index didn't match with any teacher");
+        }
     }
 
     public void addCollege(College college) {
@@ -67,8 +71,12 @@ public class University extends AdmnistrativeSection {
         }
     }
 
-    public void deleteCollege(int index) {
-        this.colleges.remove(index);
+    public void deleteCollege(int index) throws NoCollegesException {
+        if (index >= 0 && index < colleges.size()) {
+            this.colleges.remove(index);
+        } else {
+            throw new NoCollegesException("Index searched out of bounds for colleges of " + this.getName());
+        }
     }
 
     public void addSpeciality(int collegeIndex, Speciality speciality) {
@@ -86,26 +94,38 @@ public class University extends AdmnistrativeSection {
         }
     }
 
-    public void addSubjectToSpeciality(int specialityId, Subject subject) {
+    public void addSubjectToSpeciality(int specialityId, Subject subject) throws InvalidIDException {
+        boolean added = false;
         for (College college : this.colleges) {
             if (college.haveSpecialityById(specialityId)) {
                 college.addSubjectToSpeciality(specialityId, subject);
+                added = true;
             }
         }
-    }
 
-    public Teacher getTeacher(int index) {
-        if (index <= this.teachers.size()) {
-            return this.teachers.get(index - 1);
+        if (!added) {
+            throw new InvalidIDException("No se encontro el id de la especialidad");
         }
-        return null;
     }
 
-    public ArrayList<String> getTeachers() {
-        ArrayList<String> response = new ArrayList<String>();
+    public Teacher getTeacher(int index) throws NoTeacherException {
+        if (index >= 1 && index <= this.teachers.size()) {
+            return this.teachers.get(index - 1);
+        } else {
+            throw new NoTeacherException("No teacher founded");
+        }
+    }
+
+    public ArrayList<String> getTeachers() throws NoTeacherException {
+        ArrayList<String> response = new ArrayList<>();
         for (Teacher c : this.teachers) {
             response.add(c.getName());
         }
+
+        if (response.size() < 1) {
+            throw new NoTeacherException("No teachers founded");
+        }
+
         return response;
     }
 
@@ -122,19 +142,27 @@ public class University extends AdmnistrativeSection {
         return result;
     }
 
-    public ArrayList<String> getColleges() {
-        ArrayList<String> response = new ArrayList<String>();
+    public ArrayList<String> getColleges() throws NoCollegesException {
+        if (colleges.size() < 1) {
+            throw new NoCollegesException("No Colleges in " + this.getName());
+        }
+        ArrayList<String> response = new ArrayList<>();
         for (College c : this.colleges) {
             response.add(c.getName());
         }
         return response;
     }
 
-    public ArrayList<String> getSpecialities() {
-        ArrayList<String> response = new ArrayList<String>();
+    public ArrayList<String> getSpecialities() throws NoSpecialtiesFoundException {
+        ArrayList<String> response = new ArrayList<>();
         for (College c : this.colleges) {
             response.addAll(c.getSpecialities());
         }
+
+        if (response.isEmpty() || response.size() < 1) {
+            throw new NoSpecialtiesFoundException(this.getName() + " has no specialities");
+        }
+
         return response;
     }
 
@@ -147,8 +175,15 @@ public class University extends AdmnistrativeSection {
         return null;
     }
 
-    public int getLastSubjectId() {
-        return this.getSpecialities().size();
+    public int getLastSpecialityId() throws NoSpecialtiesFoundException {
+        int response = 0;
+        try {
+            response = this.getSpecialities().size();
+        } catch (NoSpecialtiesFoundException e) {
+            throw e;
+        }
+
+        return response;
     }
 
     public ArrayList<String> getSpecialityInfo(int specialityId) {
