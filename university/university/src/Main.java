@@ -1,4 +1,5 @@
 import exeptions.NoCollegesException;
+import exeptions.NoSpecialtiesFoundException;
 import exeptions.NoUniversityInReferenceException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -34,7 +35,7 @@ public class Main {
     }
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws NoSpecialtiesFoundException {
         final String UNIVERSITY_NAME = "Ohio U";
         final int QUANTITY_OF_TEACHERS = 5;
         final int QUANTITY_OF_SUBJECTS = 60;
@@ -80,11 +81,16 @@ public class Main {
             }
 
             //Print specialities
-            LOGGER.info("\n" + ohioU.getName() + " have these specialities:");
-            response = ohioU.getSpecialities();
-            for (String word : response) {
-                LOGGER.info("-" + word + "\n");
+            try {
+                LOGGER.info("\n" + ohioU.getName() + " have these specialities:");
+                response = ohioU.getSpecialities();
+                for (String word : response) {
+                    LOGGER.info("-" + word + "\n");
+                }
+            } catch (NoSpecialtiesFoundException nSFException) {
+                LOGGER.error(nSFException.getMessage());
             }
+
 
             do {
                 try {//Ask user if he wants info about any speciality
@@ -98,9 +104,10 @@ public class Main {
                 }
 
                 if (userRequest > 0 && userRequest <= ohioU.getLastSpecialityId()) {
-                    LOGGER.info("User ask about an speciality");
                     int specialityId = userRequest;
-                    String speciality = ohioU.getSpecialityById(specialityId);
+                    String speciality;
+                    LOGGER.info("User ask about an speciality");
+                    speciality = ohioU.getSpecialityById(specialityId);
                     LOGGER.info("\nHow much does it cost to study " + speciality + " (" + specialityId + ") ?");
                     LOGGER.info("--It will be: " + ohioU.calculateCost(specialityId));
 

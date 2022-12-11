@@ -15,6 +15,11 @@ public final class TrueFalse implements IEvaluate {
         return this.expectedAnswer == this.actualAnswer;
     }
 
+    @Override
+    public String acceptableAnswers() {
+        return "boolean";
+    }
+
     public void setActualAnswer(boolean actualAnswer) {
         this.actualAnswer = actualAnswer;
     }

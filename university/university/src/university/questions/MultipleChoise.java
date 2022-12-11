@@ -15,6 +15,10 @@ public class MultipleChoise implements IEvaluate {
         return this.expectedAnswer == this.actualAnswer;
     }
 
+    @Override
+    public String acceptableAnswers() {
+        return "character";
+    }
 
     public void setActualAnswer(char actualAnswer) {
         this.actualAnswer = actualAnswer;

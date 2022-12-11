@@ -4,31 +4,31 @@ import evaluate.IEvaluate;
 import university.questions.MultipleChoise;
 import university.questions.TrueFalse;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Random;
 
 public class Quiz {
+    public static final Random RANDOM = new Random();
     private double percentageToAprove;
-    private ArrayList<IEvaluate> questions;
+    HashMap<String, IEvaluate> questionsMap;
 
     public Quiz(int quantityTrueFalse, int quantityMultipleChoise, double percentageToAprove) {
-        this.questions = new ArrayList<IEvaluate>();
+        this.questionsMap = new HashMap<String, IEvaluate>();
         this.setPercentageToAprove(percentageToAprove);
         this.createTrueFalse(quantityTrueFalse);
         this.createMultipleChoise(quantityMultipleChoise);
     }
 
     private void createTrueFalse(int quantityTrueFalse) {
-        Random r = new Random();
         for (int i = 0; i < quantityTrueFalse; i++) {
-            this.questions.add(new TrueFalse(r.nextBoolean()));
+            this.questionsMap.put("Question" + (questionsMap.size() + 1), new TrueFalse(Quiz.RANDOM.nextBoolean()));
         }
     }
 
     private void createMultipleChoise(int quantityMultipleChoise) {
-        Random r = new Random();
         for (int i = 0; i < quantityMultipleChoise; i++) {
-            this.questions.add(new MultipleChoise((char) (r.nextInt(26) + 'a')));
+            this.questionsMap.put("Question" + (questionsMap.size() + 1),
+                    new MultipleChoise((char) (Quiz.RANDOM.nextInt(26) + 'a')));
         }
     }
 
@@ -47,7 +47,7 @@ public class Quiz {
     public int getResult() {
         int result = 0;
         for (IEvaluate question :
-                this.questions) {
+                this.questionsMap.values()) {
             if (question.isCorrect()) {
                 result++;
             }
@@ -56,14 +56,18 @@ public class Quiz {
     }
 
     public final boolean isAproved() {
-        if (this.getResult() >= (questions.size() * percentageToAprove)) {
-            return true;
-        } else {
-            return false;
-        }
+        return this.getResult() >= (questionsMap.size() * percentageToAprove);
     }
 
     public final double getPercentageToAprove() {
         return percentageToAprove * 100;
     }
+
+    public void receiveAnswer(HashMap<String, Boolean> answer) {
+    }
+
+    public void receiveAnswer() {
+    }
+
+
 }

@@ -4,6 +4,7 @@ import university.administrative.sections.Subject;
 import university.quizes.Quiz;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Student extends Member {
     private ArrayList<Subject> aprobbedSubjects;
@@ -16,6 +17,8 @@ public class Student extends Member {
     }
 
     public void answerQuiz(Quiz quiz) {
+        HashMap<String, String> answers = new HashMap<>();
+
 
     }
 }
