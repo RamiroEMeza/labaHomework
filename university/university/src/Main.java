@@ -1,3 +1,4 @@
+import exeptions.InvalidIDException;
 import exeptions.NoCollegesException;
 import exeptions.NoSpecialtiesFoundException;
 import exeptions.NoUniversityInReferenceException;
@@ -60,7 +61,7 @@ public class Main {
             try {
                 ohioU = universityCreator.create(UNIVERSITY_NAME, Main.getRandomInt(MIN_U_COST, MAX_U_COST),
                         ARR_COLLEGES, ARR_SPECIALITIES, teachers, QUANTITY_OF_SUBJECTS);
-            } catch (NoCollegesException nCE) {
+            } catch (NoCollegesException | InvalidIDException nCE) {
                 LOGGER.error(nCE.getMessage());
             }
 

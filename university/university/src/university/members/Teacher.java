@@ -1,10 +1,11 @@
 package university.members;
 
+import exam.IExamStudents;
 import university.administrative.sections.Subject;
 
 import java.util.ArrayList;
 
-public class Teacher extends Member {
+public class Teacher extends Member implements IExamStudents {
     private int rating;
     private ArrayList<Subject> currentlyAsignedSubjects;
 
@@ -23,5 +24,18 @@ public class Teacher extends Member {
             rating *= (-1);
         }
         this.rating = rating;
+    }
+
+    @Override
+    public String getInfo() {
+        return this.getName() + " is a " + this.getClass() + " Teaches in " +
+                this.currentlyAsignedSubjects.size() + " classes";
+    }
+
+    @Override
+    public void ExamStudents() {
+        for (Subject subject : this.currentlyAsignedSubjects) {
+            subject.Exam();
+        }
     }
 }

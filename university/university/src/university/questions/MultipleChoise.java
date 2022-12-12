@@ -20,7 +20,7 @@ public class MultipleChoise implements IEvaluate {
         return "character";
     }
 
-    public void setActualAnswer(char actualAnswer) {
-        this.actualAnswer = actualAnswer;
+    public void setActualAnswer(String actualAnswer) {
+        this.actualAnswer = actualAnswer.charAt(0);
     }
 }

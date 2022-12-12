@@ -10,6 +10,7 @@ import java.util.Random;
 public class Quiz {
     public static final Random RANDOM = new Random();
     private double percentageToAprove;
+    public final int MAX_OPTIONS_MULT_CHOISE = 6;
     HashMap<String, IEvaluate> questionsMap;
 
     public Quiz(int quantityTrueFalse, int quantityMultipleChoise, double percentageToAprove) {
@@ -17,6 +18,12 @@ public class Quiz {
         this.setPercentageToAprove(percentageToAprove);
         this.createTrueFalse(quantityTrueFalse);
         this.createMultipleChoise(quantityMultipleChoise);
+    }
+
+    public void receiveAnswers(HashMap<String, String> answers) {
+        for (String key : answers.keySet()) {
+            this.questionsMap.get(key).setActualAnswer(answers.get(key));
+        }
     }
 
     private void createTrueFalse(int quantityTrueFalse) {
@@ -28,7 +35,7 @@ public class Quiz {
     private void createMultipleChoise(int quantityMultipleChoise) {
         for (int i = 0; i < quantityMultipleChoise; i++) {
             this.questionsMap.put("Question" + (questionsMap.size() + 1),
-                    new MultipleChoise((char) (Quiz.RANDOM.nextInt(26) + 'a')));
+                    new MultipleChoise((char) (Quiz.RANDOM.nextInt(MAX_OPTIONS_MULT_CHOISE) + 'a')));
         }
     }
 
@@ -63,11 +70,17 @@ public class Quiz {
         return percentageToAprove * 100;
     }
 
-    public void receiveAnswer(HashMap<String, Boolean> answer) {
+    public String getAcceptableAnswer(int index) {
+        if (questionsMap.size() > 0 && index > 0 && index <= questionsMap.size()) {
+            return this.questionsMap.get("Question" + index).acceptableAnswers();
+        }
+        return null;
     }
 
-    public void receiveAnswer() {
+
+    public void clear() {
+        for (IEvaluate iEvaluate : questionsMap.values()) {
+            iEvaluate.setActualAnswer(null);
+        }
     }
-
-
 }

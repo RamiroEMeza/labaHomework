@@ -25,4 +25,6 @@ public abstract class Member {
         this.idNumber = idNumber;
     }
 
+    public abstract String getInfo();
+
 }

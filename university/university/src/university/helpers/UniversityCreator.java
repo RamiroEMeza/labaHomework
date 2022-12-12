@@ -1,7 +1,9 @@
 package university.helpers;
 
 import cost.FixedCost;
+import exeptions.InvalidIDException;
 import exeptions.NoCollegesException;
+import exeptions.NoSpecialtiesFoundException;
 import university.administrative.sections.College;
 import university.administrative.sections.Speciality;
 import university.administrative.sections.Subject;
@@ -18,7 +20,7 @@ public final class UniversityCreator {
     }
 
     public University create(String name, int cost, String[] collegesNames, String[] specialitiesNames,
-                             ArrayList<Teacher> teachers, int subjectsQuantity) throws NoCollegesException {
+                             ArrayList<Teacher> teachers, int subjectsQuantity) throws NoCollegesException, NoSpecialtiesFoundException, InvalidIDException {
         //Create a university
         University university = new University(name, new FixedCost(UniversityCreator.getRandomInt(100, 2000)));
 
@@ -42,11 +44,18 @@ public final class UniversityCreator {
 
         //add subjects to the specialities
         for (int i = 1; i < (subjectsQuantity + 1); i++) {
-            university.addSubjectToSpeciality(UniversityCreator.getRandomInt(1, university.getSpecialities().size()),
-                    new Subject(("Subject-" + i), 40,
-                            teachers.get(UniversityCreator.getRandomInt(0, (teachers.size() - 1))),
-                            new Quiz(4, 6, 0.7),
-                            new FixedCost(UniversityCreator.getRandomInt(50, 210))));
+            try {
+                university.addSubjectToSpeciality(UniversityCreator.getRandomInt(1, university.getSpecialities().size()),
+                        new Subject(("Subject-" + i), 40,
+                                teachers.get(UniversityCreator.getRandomInt(0, (teachers.size() - 1))),
+                                new Quiz(4, 6, 0.7),
+                                new FixedCost(UniversityCreator.getRandomInt(50, 210))));
+            } catch (NoSpecialtiesFoundException | InvalidIDException e) {
+                System.out.println(e.getMessage());
+                e.printStackTrace();
+
+            }
+
         }
 
         return university;

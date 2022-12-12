@@ -1,17 +1,21 @@
 package university.administrative.sections;
 
 import cost.ICalculateCost;
+import result.Result;
 import university.members.Student;
 import university.members.Teacher;
 import university.quizes.Quiz;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Subject extends AdmnistrativeSection {
     private int hours;
     private ArrayList<Teacher> teachers;
     private ArrayList<Quiz> quizes;
     private ArrayList<Student> students;
+
+    private ArrayList<Result> results;
 
     public Subject(String name, int hours, Teacher teacher, Quiz quiz, ICalculateCost cost) {
         super(name, cost);
@@ -76,5 +80,17 @@ public class Subject extends AdmnistrativeSection {
             result += t.getRating();
         }
         return result * this.getBaseCost();
+    }
+
+    public void Exam() {
+        for (Student s : this.students) {//ask each student
+            for (Quiz q : this.quizes) {//gives the student each quiz
+                HashMap<String, String> answer = new HashMap<>();
+                answer = s.answerQuiz(q);//student answer the quiz
+                q.receiveAnswers(answer);//the quiz receives the answers
+                this.results.add(new Result(s, this, q.isAproved(), q.getResult()));
+                q.clear();
+            }
+        }
     }
 }

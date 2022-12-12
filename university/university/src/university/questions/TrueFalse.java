@@ -20,7 +20,7 @@ public final class TrueFalse implements IEvaluate {
         return "boolean";
     }
 
-    public void setActualAnswer(boolean actualAnswer) {
-        this.actualAnswer = actualAnswer;
+    public void setActualAnswer(String actualAnswer) {
+        this.actualAnswer = Boolean.parseBoolean(actualAnswer);
     }
 }

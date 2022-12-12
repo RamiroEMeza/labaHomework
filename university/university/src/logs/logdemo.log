@@ -67,3 +67,118 @@ Ohio U have these specialities:
 If you want to know the cost of any of ours specialities, please enter its (id) number. Any other character to exit
 10:50:04.284 [main] INFO  Main - User didn't ask about any speciality and enter an non integer data, setting userRequest=0
 10:50:04.284 [main] INFO  Main - END MAIN
+20:44:52.403 [main] INFO  Main - Start of the program
+20:44:52.514 [main] INFO  Main - 
+Ohio University is equals to Ohio University? true
+
+20:44:52.514 [main] INFO  Main - Ohio U have these colleges:
+20:44:52.515 [main] INFO  Main - [College of Fine Arts, College of Engineering and Technology, College of Health Sciences]
+20:44:52.515 [main] INFO  Main - 
+Ohio U have these specialities:
+20:44:52.515 [main] INFO  Main - -Anthropology (Id: 1)
+ [Subjects: 13]
+ At College of Engineering and Technology
+
+
+
+20:44:52.515 [main] INFO  Main - -Applied Plant Biology (Id: 2)
+ [Subjects: 7]
+ At College of Engineering and Technology
+
+
+
+20:44:52.515 [main] INFO  Main - -Applied Nutrition (Id: 5)
+ [Subjects: 7]
+ At College of Engineering and Technology
+
+
+
+20:44:52.515 [main] INFO  Main - -Astrophysics (Id: 3)
+ [Subjects: 13]
+ At College of Health Sciences
+
+
+
+20:44:52.515 [main] INFO  Main - -Art History (Id: 4)
+ [Subjects: 9]
+ At College of Health Sciences
+
+
+
+20:44:52.516 [main] INFO  Main - -Communication Sciences and Disorders (Id: 6)
+ [Subjects: 11]
+ At College of Health Sciences
+
+
+
+20:44:52.516 [main] INFO  Main - 
+If you want to know the cost of any of ours specialities, please enter its (id) number. Any other character to exit
+20:45:30.098 [main] INFO  Main - User ask about an speciality
+20:45:30.102 [main] INFO  Main - 
+How much does it cost to study Applied Plant Biology (2) ?
+20:45:30.102 [main] INFO  Main - --It will be: 6309
+20:45:30.103 [main] INFO  Main - 
+If you want to know the details of Applied Plant Biology, please enter [1].
+Any other character to keep asking.
+[0] to exit
+20:45:33.140 [main] INFO  Main - User ask about the details of an speciality
+20:45:33.141 [main] INFO  Main - 
+In Applied Plant Biology you will have:
+20:45:33.146 [main] INFO  Main - ~ Subject-10 Cost: 63 Quality teacher charge:189 QuizQ: 1
+20:45:33.146 [main] INFO  Main - ~ Subject-17 Cost: 110 Quality teacher charge:550 QuizQ: 1
+20:45:33.146 [main] INFO  Main - ~ Subject-24 Cost: 55 Quality teacher charge:165 QuizQ: 1
+20:45:33.146 [main] INFO  Main - ~ Subject-35 Cost: 52 Quality teacher charge:156 QuizQ: 1
+20:45:33.146 [main] INFO  Main - ~ Subject-50 Cost: 183 Quality teacher charge:549 QuizQ: 1
+20:45:33.147 [main] INFO  Main - ~ Subject-55 Cost: 100 Quality teacher charge:300 QuizQ: 1
+20:45:33.147 [main] INFO  Main - ~ Subject-57 Cost: 145 Quality teacher charge:290 QuizQ: 1
+20:45:33.147 [main] INFO  Main - --Is enter exam required? true
+20:45:33.147 [main] INFO  Main - 
+If you want to know the cost of any of ours specialities, please enter its (id) number. Any other character to exit
+20:45:39.903 [main] INFO  Main - User didn't ask about any speciality and enter an non integer data, setting userRequest=0
+20:45:39.903 [main] INFO  Main - END MAIN
+20:58:43.234 [main] INFO  Main - Start of the program
+20:58:43.271 [main] INFO  Main - 
+Ohio University is equals to Ohio University? true
+
+20:58:43.271 [main] INFO  Main - Ohio U have these colleges:
+20:58:43.271 [main] INFO  Main - [College of Fine Arts, College of Engineering and Technology, College of Health Sciences]
+20:58:43.271 [main] INFO  Main - 
+Ohio U have these specialities:
+20:58:43.271 [main] INFO  Main - -Anthropology (Id: 1)
+ [Subjects: 9]
+ At College of Engineering and Technology
+
+
+
+20:58:43.272 [main] INFO  Main - -Communication Sciences and Disorders (Id: 6)
+ [Subjects: 9]
+ At College of Engineering and Technology
+
+
+
+20:58:43.272 [main] INFO  Main - -Applied Plant Biology (Id: 2)
+ [Subjects: 7]
+ At College of Health Sciences
+
+
+
+20:58:43.272 [main] INFO  Main - -Astrophysics (Id: 3)
+ [Subjects: 8]
+ At College of Health Sciences
+
+
+
+20:58:43.272 [main] INFO  Main - -Art History (Id: 4)
+ [Subjects: 13]
+ At College of Health Sciences
+
+
+
+20:58:43.272 [main] INFO  Main - -Applied Nutrition (Id: 5)
+ [Subjects: 14]
+ At College of Health Sciences
+
+
+
+20:58:43.272 [main] INFO  Main - 
+If you want to know the cost of any of ours specialities, please enter its (id) number. Any other character to exit
