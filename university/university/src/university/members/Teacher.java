@@ -36,6 +36,18 @@ public class Teacher extends Member implements IExamStudents {
     public void ExamStudents() {
         for (Subject subject : this.currentlyAsignedSubjects) {
             subject.Exam();
+
         }
     }
+
+    @Override
+    public ArrayList<String> giveResults() {
+        ArrayList<String> results = new ArrayList<String>();
+        for (Subject subject : this.currentlyAsignedSubjects) {
+            results.addAll(subject.getResults());
+        }
+        return results;
+    }
+
+
 }

@@ -182,3 +182,96 @@ Ohio U have these specialities:
 
 20:58:43.272 [main] INFO  Main - 
 If you want to know the cost of any of ours specialities, please enter its (id) number. Any other character to exit
+00:08:45.367 [main] INFO  Main - Start of the program
+00:08:45.440 [main] INFO  Main - 
+Ohio University is equals to Ohio University? true
+
+00:08:45.440 [main] INFO  Main - Ohio U have these colleges:
+00:08:45.440 [main] INFO  Main - [College of Fine Arts, College of Engineering and Technology, College of Health Sciences]
+00:08:45.441 [main] INFO  Main - 
+Ohio U have these specialities:
+00:08:45.441 [main] INFO  Main - -Anthropology (Id: 1)
+ [Subjects: 8]
+ At College of Engineering and Technology
+
+
+
+00:08:45.441 [main] INFO  Main - -Applied Plant Biology (Id: 2)
+ [Subjects: 8]
+ At College of Engineering and Technology
+
+
+
+00:08:45.441 [main] INFO  Main - -Astrophysics (Id: 3)
+ [Subjects: 11]
+ At College of Engineering and Technology
+
+
+
+00:08:45.441 [main] INFO  Main - -Art History (Id: 4)
+ [Subjects: 9]
+ At College of Health Sciences
+
+
+
+00:08:45.441 [main] INFO  Main - -Applied Nutrition (Id: 5)
+ [Subjects: 14]
+ At College of Health Sciences
+
+
+
+00:08:45.442 [main] INFO  Main - -Communication Sciences and Disorders (Id: 6)
+ [Subjects: 10]
+ At College of Health Sciences
+
+
+
+00:08:45.442 [main] INFO  Main - 
+If you want to know the cost of any of ours specialities, please enter its (id) number. Any other character to exit
+00:09:35.372 [main] INFO  Main - Start of the program
+00:09:35.389 [main] INFO  Main - 
+Ohio University is equals to Ohio University? true
+
+00:09:35.391 [main] INFO  Main - Ohio U have these colleges:
+00:09:35.391 [main] INFO  Main - [College of Fine Arts, College of Engineering and Technology, College of Health Sciences]
+00:09:35.391 [main] INFO  Main - 
+Ohio U have these specialities:
+00:09:35.391 [main] INFO  Main - -Applied Plant Biology (Id: 2)
+ [Subjects: 11]
+ At College of Engineering and Technology
+
+
+
+00:09:35.392 [main] INFO  Main - -Anthropology (Id: 1)
+ [Subjects: 7]
+ At College of Health Sciences
+
+
+
+00:09:35.392 [main] INFO  Main - -Astrophysics (Id: 3)
+ [Subjects: 10]
+ At College of Health Sciences
+
+
+
+00:09:35.392 [main] INFO  Main - -Art History (Id: 4)
+ [Subjects: 11]
+ At College of Health Sciences
+
+
+
+00:09:35.392 [main] INFO  Main - -Applied Nutrition (Id: 5)
+ [Subjects: 11]
+ At College of Health Sciences
+
+
+
+00:09:35.392 [main] INFO  Main - -Communication Sciences and Disorders (Id: 6)
+ [Subjects: 10]
+ At College of Health Sciences
+
+
+
+00:09:35.392 [main] INFO  Main - []
+00:09:35.392 [main] INFO  Main - 
+If you want to know the cost of any of ours specialities, please enter its (id) number. Any other character to exit

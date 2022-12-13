@@ -6,6 +6,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import university.administrative.sections.University;
 import university.helpers.UniversityCreator;
+import university.members.Student;
 import university.members.Teacher;
 
 import java.io.BufferedReader;
@@ -51,16 +52,18 @@ public class Main {
         UniversityCreator universityCreator = new UniversityCreator();
         ArrayList<String> response = null;
 
+        Student student = new Student("Lionel Messi", 1);
+
         int userRequest;
         BufferedReader readRequest = new BufferedReader(new InputStreamReader(System.in));
-
+        System.out.println(LOGGER.isInfoEnabled());
         do {
             LOGGER.info("Start of the program");
             //Create a university
             University ohioU = null;
             try {
                 ohioU = universityCreator.create(UNIVERSITY_NAME, Main.getRandomInt(MIN_U_COST, MAX_U_COST),
-                        ARR_COLLEGES, ARR_SPECIALITIES, teachers, QUANTITY_OF_SUBJECTS);
+                        ARR_COLLEGES, ARR_SPECIALITIES, teachers, QUANTITY_OF_SUBJECTS, student);
             } catch (NoCollegesException | InvalidIDException nCE) {
                 LOGGER.error(nCE.getMessage());
             }
@@ -91,6 +94,10 @@ public class Main {
             } catch (NoSpecialtiesFoundException nSFException) {
                 LOGGER.error(nSFException.getMessage());
             }
+
+            teachers.get(0).ExamStudents();
+            response = teachers.get(0).giveResults();
+            LOGGER.info(response.toString());
 
 
             do {

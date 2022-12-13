@@ -6,4 +6,6 @@ public interface IEvaluate {
     public abstract String acceptableAnswers();
 
     public abstract void setActualAnswer(String answer);
+
+
 }

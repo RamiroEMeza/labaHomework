@@ -93,4 +93,12 @@ public class Subject extends AdmnistrativeSection {
             }
         }
     }
+
+    public ArrayList<String> getResults() {
+        ArrayList<String> results = new ArrayList<String>();
+        for (Result r : this.results) {
+            results.add(r.toString());
+        }
+        return results;
+    }
 }

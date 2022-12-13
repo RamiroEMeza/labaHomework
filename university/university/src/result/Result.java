@@ -31,4 +31,14 @@ public class Result {
     public int getResult() {
         return result;
     }
+
+    @Override
+    public String toString() {
+        return "Result{" +
+                "student=" + student +
+                ", subject=" + subject +
+                ", approved=" + approved +
+                ", result=" + result +
+                '}';
+    }
 }
